@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* aminations */
+
+.animate-blink {
+  animation: blinkAnimation 5s alternate infinite;
+}
+@keyframes blinkAnimation {
+  0% {height: 16px; top: 25px;}
+  25% {height: 0px; top: 33px;}
+  50% {height: 16px; top: 25px;}
+  75% {height: 0px; top: 33px;}
+  100% {height: 16px; top: 25px;}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* .animate-fill {
+  animation: fillAnimation 1s ease-in-out 1;
+}
+@keyframes fillAnimation {
+  from {background-color: #117a7a;}
+  to {background-color: black;}
+} */
+
+
+/* background color and color */
+
+.font-red {
+  color: #e11b23;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bc-red {
+  background-color: #e11b23;
 }
 
-.App-link {
-  color: #61dafb;
+.font-grey {
+  color: #58595b;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bc-grey {
+  background-color: #58595b;
 }
+
+.bc-green {
+  background-color: #117a7a;
+}
+/* 
+.font-green {
+  color: #117a7a;
+} */
+
+.source-sans-3 {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+
+
