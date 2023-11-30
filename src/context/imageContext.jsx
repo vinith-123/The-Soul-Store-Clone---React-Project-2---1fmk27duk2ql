@@ -71,9 +71,174 @@ function ImageProvider({children}) {
         }
     )
 
+    const categories= [
+        {
+            men: [
+                {
+                    route: "men-sweatshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_DwEgJnT.jpg?format=webp&w=480&dpr=2.0",
+                },
+                {
+                    route: "explore/oversized-full-sleeve-tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_2_03YHRD0.jpg?format=webp&w=480&dpr=1.3",
+                },
+                {
+                    route: "jackets",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_1_TojfZVA.jpg?format=webp&w=480&dpr=2.0",
+                },
+                {
+                    route: "oversized-tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_1_DbTmKWy.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "polo-tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_11_FRk0BHl.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "men-hoodies",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_4_Jb9QRd0.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "t-shirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_3_SptA5Yt.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "shirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_8_zBPNcKY.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "men-jeans",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_7_GY0K5e7.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "cotton-pants",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_6_EV3hsHK.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "sweat-shorts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_2_oKv3uni.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "men-footwear",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_10_zBIug94.jpg?format=webp&w=360&dpr=2.0",
+                }
+            ],
+
+            women: [
+                {
+                    route: "women-tops",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/big-tile-women-tops-.jpg?format=webp&w=480&dpr=1.3",
+                },
+                {
+                    route: "tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/big-tile-women-OS-tee-.jpg?format=webp&w=480&dpr=1.3",
+                },
+                {
+                    route: "co-ord-sets",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/women-Website-tile-big-one_2_PIshbAp.jpg?format=webp&w=480&dpr=1.3",
+                },
+                {
+                    route: "women-hoodies-and-sweatshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-hoodies.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "women-knitted-sweaters",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-Sweater.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "women-jackets",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-jkt.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "womens-shirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/shirts_web_tile_Bfl4PFh.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "women-pants",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-pants.jpg?format=webp&w=360&dpr=2.0",
+                }
+            ],
+
+            kids: [
+                {
+                    route: "boys-sweatshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile4_ARoe1Fc.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "girls-sweatshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile6_7IBpCAX.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "boys-jackets",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile1_iCn5C4m.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "girls-cotton-jackets",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile3_hmYiz8k.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "boys-tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile10_3.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "girls-t-shirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile8_U7szSuZ.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "girls-gathered-dresses",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile12.jpg?format=webp&w=360&dpr=1.3",
+                },
+                {
+                    route: "boys-polo-tshirts",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/Website-tile9_1.jpg?format=webp&w=360&dpr=2.0",
+                }
+                
+            ],
+        }
+    ];
+
+    const merchandise= [
+        {
+            title: "naruto",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/naruto.jpg?format=webp&w=240&dpr=2.0",
+        },
+        {
+            title: "marvel",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/marvel.jpg?format=webp&w=240&dpr=2.0",
+        },
+        {
+            title: "harry-potter",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/harry_potter.jpg?format=webp&w=240&dpr=2.0",
+        },
+        {
+            title: "batman",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/batman.jpg?format=webp&w=240&dpr=2.0",
+        },
+        {
+            title: "micky-mouse",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/Mickey.jpg?format=webp&w=300&dpr=1.3",
+        },
+        {
+            title: "sesame-street",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/sesame_street.jpg?format=webp&w=300&dpr=1.3",
+        },
+        {
+            title: "power-girls",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/powerpuff.jpg?format=webp&w=300&dpr=1.3",
+        },
+        {
+            title: "disney",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/disney.jpg?format=webp&w=300&dpr=1.3",
+        },
+        {
+            title: "peanuts",
+            url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/peanuts.jpg?format=webp&w=300&dpr=1.3",
+        }, 
+    ]
+
     // console.log(bigCorousalForMen);
     return (
-        <ImageContext.Provider value={{bigCorousalForMen, bigCorousalForWomen, bigCorousalForKids}}>
+        <ImageContext.Provider value={{bigCorousalForMen, bigCorousalForWomen, bigCorousalForKids, categories, merchandise}}>
             {children}
         </ImageContext.Provider>
     )

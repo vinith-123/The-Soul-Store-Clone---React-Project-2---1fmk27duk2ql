@@ -17,6 +17,24 @@ body {
 }
 
 
+.animate-search {
+  animation: searchAnimation 2.5s ease 1;
+}
+@keyframes searchAnimation {
+  0% {transform: translateX(100%);}
+  100% {transform: translateX(0%);}
+}
+
+
+.animate-opacity {
+  animation: opacityAnimation 1s ease 1;
+}
+@keyframes opacityAnimation {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+
 /* .animate-fill {
   animation: fillAnimation 1s ease-in-out 1;
 }
@@ -47,14 +65,19 @@ body {
 .bc-green {
   background-color: #117a7a;
 }
-/* 
+
 .font-green {
   color: #117a7a;
-} */
+}
+
+
+/* font family */
 
 .source-sans-3 {
   font-family: 'Source Sans 3', sans-serif;
 }
+
+
 
 
 

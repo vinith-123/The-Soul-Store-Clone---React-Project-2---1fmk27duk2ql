@@ -1,27 +1,30 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FacebookIcon from "../../assets/svg/facebookIcon";
-import FilledEye from "../../assets/svg/filledEye";
-import FilledSlashedEye from "../../assets/svg/filledSlashedEye";
 import GoogleIcon from "../../assets/svg/googleIcon";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
+import Password from "./password";
 
 
 
 
 export default function SignUp() {
 
-    const {setAuthenticated, save_user_and_token, projectId}= useContext(UserContext);
+    const {setIsAuthenticated, save_user_and_token, projectId}= useContext(UserContext);
     const navigate= useNavigate();
 
-    const [isPasswordHidden, set_hiddenness_of_password]= useState(true);
     const [errorState, set_error_state]= useState("");
 
+    const [isPasswordCorrect, setIsPasswordCorrect]= useState(null);
+    const [reEnterPass, setReEnterPass]= useState(null);
+     
+
     const [userInfo, set_user_info]= useState({
-        name: '',
-        email: '',
-        password: '',
-        appType: 'ecommerce',
+        name: "",
+        email: "",
+        password: "",
+        // phone: "",
+        appType: "ecommerce",
     });
 
     function handle_change(event) {
@@ -36,6 +39,18 @@ export default function SignUp() {
             };
         });
     }
+
+    function checkPassword(event) {
+        const {value}= event.target;
+
+        setReEnterPass(value);
+
+        if(userInfo.password === value) {
+            setIsPasswordCorrect(true);
+        } else {
+            setIsPasswordCorrect(false);
+        }
+    }
  
     function handle_submit(event) {
         event.preventDefault();
@@ -43,18 +58,30 @@ export default function SignUp() {
         if(!userInfo.email || !userInfo.password || !userInfo.name) {
             set_error_state('*All fields must be filled');
             return;
+        } else if(!/^[a-zA-Z]+(?:['\s-][a-zA-Z]+)*$/.test(userInfo.name)) {
+            set_error_state("*Name should only contain letters and spaces.");
+            return;
         } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userInfo.email)) {
             set_error_state("*Format of email is not correct");
             return;
-        } else if(/^[a-zA-Z]+(?:['\s-][a-zA-Z]+)*$/.test())
-        
+        } else if(userInfo.password !== reEnterPass && reEnterPass !== "") {
+            setIsPasswordCorrect(false);
+        }
+        // } else if(!/[0-9]/.test(userInfo.phone)) {
+        //     set_error_state("*Phone number should only contain numbers");
+        //     return;
+        // } else if(userInfo.phone.length !== 10) {
+        //     console.log("length of phone no.: ", userInfo.phone.length);
+        //     set_error_state("*Phone number should be 10 digits long");
+        //     return;
+        // }
         sign_up(userInfo);
     }
 
     async function sign_up(userInfo) {
         try {
             var myHeaders = new Headers();
-            myHeaders.append("projectId", {projectId});
+            myHeaders.append("projectID", {projectId});
             myHeaders.append("Content-Type", "application/json");
         
             const url = "https://academics.newtonschool.co/api/v1/user/signup";
@@ -70,6 +97,9 @@ export default function SignUp() {
             };
         
             const response = await fetch(url, requestOptions);
+
+            // console.log("response: ", response);
+            // console.log("user info.: ", userInfo);
             
             if (response.ok) {
                 const data = await response.json();
@@ -77,18 +107,18 @@ export default function SignUp() {
                 const { token, data: loginData } = data;
                 localStorage.setItem("authToken", token);
                 localStorage.setItem("userInfo", loginData);
-                save_user_and_token(loginData, token);
 
-                setAuthenticated(true);
+                setIsAuthenticated(true);
                 set_signupform_state();
                 navigate("/men");
             } else {
-                set_error_state("Password or email is incorrect");
+                set_error_state("Registration failed.");
             }
         } catch (error) {
           console.log(error);
         }
     }
+
     return (
         <>
             <p className="font-grey font-semibold text-[16px] my-[1rem]">Register with The Souled Store</p>
@@ -124,59 +154,26 @@ export default function SignUp() {
                     </div>
 
                     <form className="flex flex-col w-full text-[14px] font-bold" onSubmit={(event) => handle_submit(event)}>
-                        <div className="flex">
-                            <input type="text" placeholder="First name" name="first-name" inputMode="text" required
-                                className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
-                                onChange={(event) => handle_change(event)}/>
+                        <input type="text" placeholder="Full name" name="name" inputMode="text" required
+                            className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
+                            onChange={(event) => handle_change(event)}/>
 
-                            <input type="text" placeholder="Last name" name="last-name" inputMode="text" required
-                                className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black ml-[1rem]" 
-                                onChange={(event) => handle_change(event)}/>
-                        </div>
 
                         <input type="email" placeholder="Your email address" name="email" inputMode="email" required
                             className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
                             onChange={(event) => handle_change(event)}/>
                         
-                        <div className="relative">
-                            <input type={isPasswordHidden ? "password" : "text"} placeholder="Conform password" name="password" inputMode='text' required
-                                className="w-full border-[1px] border-[#ccc] my-[0.5rem] rounded-[4px] pl-[8px] py-[6px] pr-[50px]
-                                    text-black" 
-                                onChange={(event) => handle_change(event)}/>
-                                <div className="absolute right-[13px] top-[15px]">
-                                    {
-                                        isPasswordHidden ? <div onClick= {() => set_hiddenness_of_password(false)}>
-                                                <FilledEye width= {"20px"} height={"20px"}  />
-                                            </div> 
-                                            : 
-                                            <div onClick= {() => set_hiddenness_of_password(true)}>
-                                                <FilledSlashedEye width= {"20px"} height={"20px"} />
-                                            </div>
-                                    }
-                                </div>
-                        </div>
+                        {/* enter password */}
+                        
+                        <Password callbackFunction={handle_change} placeholderText={"Enter password"} />
 
-                        <div className="relative">
-                            <input type={isPasswordHidden ? "password" : "text"} placeholder="Enter password" name="password" inputMode='text' required
-                                className="w-full border-[1px] border-[#ccc] my-[0.5rem] rounded-[4px] pl-[8px] py-[6px] pr-[50px]
-                                    text-black" 
-                                onChange={(event) => handle_change(event)}/>
-                                <div className="absolute right-[13px] top-[15px]">
-                                    {
-                                        isPasswordHidden ? <div onClick= {() => set_hiddenness_of_password(false)}>
-                                                <FilledEye width= {"20px"} height={"20px"}  />
-                                            </div> 
-                                            : 
-                                            <div onClick= {() => set_hiddenness_of_password(true)}>
-                                                <FilledSlashedEye width= {"20px"} height={"20px"} />
-                                            </div>
-                                    }
-                                </div>
-                        </div>
+                        {/* password conformation */}
+                        <Password callbackFunction={checkPassword} placeholderText={"Confirm password"} isPasswordCorrect={isPasswordCorrect} />
 
-                        <input type="tel" placeholder="Your phone number" name="phone-number" inputMode="tel" required
+                        {/* phone number */}
+                        {/* <input type="tel" placeholder="Your phone number" name="phone" inputMode="number" required
                             className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
-                            onChange={(event) => handle_change(event)}/>
+                            onChange={(event) => handle_change(event)}/> */}
                         
                         {
                             errorState && <div className="text-[#ff0000] font-semibold">{errorState}</div>

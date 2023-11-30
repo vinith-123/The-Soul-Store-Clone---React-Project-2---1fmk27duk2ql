@@ -8,27 +8,25 @@ import RenderModal from "./renderModal";
 
 
 
-export default function RenderNavbarTag({category, list}) {
+export default function RenderNavbarTag({category, list, effect}) {
 
     const [isHovered, setIsHovered]= useState(false);
 
     return (
-        <div className="relative group flex items-center py-[19px] px-[10px] cursor-pointer 
-            border-b-[5px] border-white hover:text-[#e11b23] hover:border-b-[5px] hover:border-[#e11b23]
-            hover:bg-[#fbfbfb]" 
+        <div className={`${effect} relative group flex justify-between items-center cursor-pointer`}
             onMouseOver={() => setIsHovered(true)}
             onMouseOut={() => setIsHovered(false)}>
             <p className="group-hover:text-[#e11b23]">{category}</p>
 
             {
-                <div className="ml-[5px]">
-                        {
-                            isHovered ? 
-                                <ChevronUp width={"15px"} height={"15px"} effect={"group-hover:fill-[#e11b23]"} color={"#585958"} />
-                            :
-                                <ChevronDown width={"15px"} height={"15px"} effect={"group-hover:fill-[#e11b23]"} color={"#585958"} />
+                <div className="ml-[8px]">
+                    {
+                        isHovered ? 
+                            <ChevronUp width={"15px"} height={"15px"} effect={"group-hover:fill-[#e11b23]"} color={"#585958"} />
+                        :
+                            <ChevronDown width={"15px"} height={"15px"} effect={"group-hover:fill-[#e11b23]"} color={"#585958"} />
 
-                        }
+                    }
                 </div>
             }
             

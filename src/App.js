@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./styles/App.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Navbar from "./components/homePage/navbar";
 import PageForMen from "./pages/homePage/pageForMen";
 import PageForWomen from "./pages/homePage/pageForWomen";
@@ -10,6 +10,9 @@ import Footer from "./components/homePage/footer";
 import AuthenticationPage from "./pages/loginPage/authenticationPage";
 import SignUp from "./components/authenticationPage/signUp";
 import LogIn from "./components/authenticationPage/logIn";
+import Whishlist from "./pages/user/whishlist";
+import Cart from "./pages/user/cart";
+import Error404 from "./pages/errorPage/error404";
 
 function App() {
 
@@ -51,6 +54,9 @@ function App() {
         <Route path="register" element= {<SignUp />} />
         <Route path="login" element= {<LogIn />} />
       </Route>
+      <Route path="/mywhishlist" element= {<Whishlist />} />
+      <Route path="/cart" element= {<Cart />} />
+      <Route path="*" element= {<Error404 />} />
 
     </Routes>
 

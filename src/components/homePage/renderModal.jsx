@@ -9,7 +9,7 @@ export default function RenderModal({list}) {
     let i=0;
     return (
         <ul className="absolute top-[65px] left-0 font-semibold text-[15px] w-max min-w-[10rem]
-            shadow-[0px_0px_20px_0px_rgba(0,0,0,0.2) z-10]">
+            shadow-[0px_0px_20px_-5px_rgba(0,0,0,0.5) z-20 bg-white]">
             <div className="p-[1rem] bg-white">
                 {
                     list.map((item) => {

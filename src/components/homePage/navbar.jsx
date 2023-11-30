@@ -1,4 +1,4 @@
-import { NavLink, Navigate, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 
 
@@ -29,15 +29,17 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex justify-center w-full lg:justify-between 2xl:justify-around">
-                    <div className="flex text-[14px] font-bold lg:ml-[8rem] xl:ml-[15rem]">
+                    <div className="flex flex-1 w-full text-[14px] font-bold lg:ml-[8rem] xl:ml-[15rem]">
                         {
                             navLinks.map(item => {
                                 const {link, route}= item;
 
                                 return (
                                     <NavLink key={link} to={route} className={({ isActive }) =>
-                                        isActive ? "bg-white font-grey" : "bc-red text-white border-x-[0.5px] border-black"}>
-                                            <div className="px-[25px] py-[12px]">
+                                        isActive ? "bg-white font-grey w-1/3 lg:w-min"
+                                         : 
+                                        "w-1/3 bc-red text-white border-x-[0.5px] border-black lg:w-min"}>
+                                            <div className="flex items-center justify-center w-full px-[25px] py-[12px]">
                                                 {link}
                                             </div>
                                     </NavLink>
@@ -56,7 +58,7 @@ export default function Navbar() {
                             <a href="#">CONTACT US</a>
                         </div>
                         <div className="m-[10px]">
-                            <a href="#">DOWNLOAD APP</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.thesouledstore">DOWNLOAD APP</a>
                         </div>
                     </div>
                 </div>

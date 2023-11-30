@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import FilledEye from "../../assets/svg/filledEye";
 import FilledSlashedEye from "../../assets/svg/filledSlashedEye";
+import Password from "./password";
 
 
 
@@ -130,24 +131,8 @@ export default function LogIn() {
                             className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
                             onChange={(event) => handle_change(event)}/>
         
-                        <div className="relative">
-                            <input type={isPasswordHidden ? "password" : "text"} placeholder="Enter password" name="password" inputMode='text'
-                                className="w-full border-[1px] border-[#ccc] my-[0.5rem] rounded-[4px] pl-[8px] py-[6px] pr-[50px]
-                                    text-black" 
-                                onChange={(event) => handle_change(event)}/>
-                                <div className="absolute right-[13px] top-[15px]">
-                                    {
-                                        isPasswordHidden ? <div onClick= {() => set_hiddenness_of_password(false)}>
-                                                <FilledEye width= {"20px"} height={"20px"}  />
-                                            </div> 
-                                            : 
-                                            <div onClick= {() => set_hiddenness_of_password(true)}>
-                                                <FilledSlashedEye width= {"20px"} height={"20px"} />
-                                            </div>
-                                    }
-                                </div>
-                        </div>
-                        
+                        <Password callbackFunction={handle_change} placeholderText={"Enter password"} />
+
                         {
                             errorState && <div className="text-[#ff0000] font-semibold">{errorState}</div>
                         }
