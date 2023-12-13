@@ -19,7 +19,6 @@ root.render(
               <App />
             </BrowserRouter>
           </UserProvider>
-          
         </ModalProvider>
       </ImageProvider>
     </TagProvider>

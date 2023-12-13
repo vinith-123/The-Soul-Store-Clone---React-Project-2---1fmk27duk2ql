@@ -4,9 +4,7 @@ import { ImageContext } from "../../context/imageContext";
 import Categories from "../../components/homePage/categories";
 import OfficialMerchandise from "../../components/homePage/officialMerchandise";
 import Apparel from "../../components/homePage/apparel";
-
-
-
+import BigCorousel from "../../components/homePage/bigCorousel";
 
 
 export default function PageForKids() {
@@ -17,21 +15,13 @@ export default function PageForKids() {
     return (
         <div className="relative w-full flex flex-col items-center justify-between font-grey font-bold text-[14px]">
             <Apparel list={apparelForKids} />
+            {/* <BigCorousel list={bigCorousalForKids} /> */}
 
-            {/* <BigCorousel list={bigCorousalForMen} /> */}
-            
-            {/* <div>
-                <SimpleImageSlider
-                    width= {896}
-                    height= {500}
-                    images= {isMobile ? list.smallSize : list.largeSize}
-                    showBullets= {true}
-                    showNavs= {true}
-                    loop= {true} />
-            </div> */}
+            <div className="max-w-[1500px] flex flex-col justify-center items-center">
+                <Categories list={categories[0].kids} />
+                <OfficialMerchandise list={merchandise} />
+            </div>
 
-            <Categories list={categories[0].kids} />
-            <OfficialMerchandise list={merchandise} />
         </div>
     )
 }

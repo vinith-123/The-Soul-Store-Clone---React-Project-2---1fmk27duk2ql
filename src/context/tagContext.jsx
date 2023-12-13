@@ -6,6 +6,16 @@ const TagContext= React.createContext();
 
 function TagProvider({children}) {
 
+    const optionsInAccountSection= [
+        {title: "Orders", route: "orders"},
+        {title: "Gift Vouchers", route: "my-gift-voucher"},
+        {title: "TSS Points", route: "points"},
+        {title: "TSS Money", route: "money"},
+        {title: "Saved Cards", route: "my-saved-cards"},
+        {title: "Profile", route: "profile"},
+        {title: "Submit Design", route: "submit-art-work"},
+    ]
+
     const [apparelForMen, setApparelForMen]= useState(
         [
             {category: "TOPWEAR", isRoute: false, route: "/", tagList: [
@@ -202,7 +212,8 @@ function TagProvider({children}) {
 
 
     return (
-        <TagContext.Provider value={{apparelForMen, apparelForWomen, apparelForKids, shopByThemes}}>
+        <TagContext.Provider value={{apparelForMen, apparelForWomen, apparelForKids, shopByThemes,
+            optionsInAccountSection}}>
             {children}
         </TagContext.Provider>
     )

@@ -20,7 +20,7 @@ import ChevronUp from "../../assets/svg/chevronUp";
 
 export default function Apparel({list}) {
 
-    const {isMobile, setIsMenuOpened}= useContext(ModalContext);
+    const {isMobile}= useContext(ModalContext);
     const {apparelForMen, apparelForWomen, apparelForKids}= useContext(TagContext);
     const {isAuthenticated, setIsAuthenticated, save_user_and_token}= useContext(UserContext);
 
@@ -43,14 +43,14 @@ export default function Apparel({list}) {
     const navigate= useNavigate();
 
     const [profileOptions, setProfileOptions]= useState([
-        {option: "Orders", route: "/orders"},
-        {option: "Gift Vouchers", route: "/my-gift-vouchers"},
-        {option: "TSS Money", route: "/my-money"},
-        {option: "TSS Points", route: "/my-points"},
-        {option: "Saved Cards", route: "/my-saved-cards"},
-        {option: "Profile", route: "/profile"},
-        {option: "FAQs", route: "/faqs"},
-        {option: "Submit Design", route: "/submit-art-work"},
+        {option: "Orders", route: "orders"},
+        {option: "Gift Vouchers", route: "my-gift-vouchers"},
+        {option: "TSS Money", route: "my-money"},
+        {option: "TSS Points", route: "my-points"},
+        {option: "Saved Cards", route: "my-saved-cards"},
+        {option: "Profile", route: "profile"},
+        {option: "FAQs", route: "faqs"},
+        {option: "Submit Design", route: "submit-art-work"},
     ]);
 
     const [aboutSection, setAboutSection]= useState([
@@ -253,10 +253,10 @@ export default function Apparel({list}) {
                         list.map((item) => {
                             const {option, route}= item;
 
-                            // console.log(routeName);
+                            // console.log(route);
                             return (
                                 <li key={option} className="py-[3px] hover:text-[#e11b23]">
-                                    <Link to={route}>
+                                    <Link to={`/profile/${route}`}>
                                         <div className="flex">
                                             <p>{option}</p>
                                         </div>
@@ -302,7 +302,7 @@ export default function Apparel({list}) {
                     <div className="relative" 
                         onMouseOver={() => setIsHovered(true)}
                         onMouseOut={() => setIsHovered(false)}>
-                        <Link to={isAuthenticated ? "/" : "/authentication"}>
+                        <Link to={isAuthenticated ? "/profile" : "/authentication"}>
                             <div className="px-[10px] lg:px-[1rem] py-[19px] border-b-[5px] border-white 
                             hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                                 <PersonFilled width={"22px"} height={"22px"} color={"#585958"} />

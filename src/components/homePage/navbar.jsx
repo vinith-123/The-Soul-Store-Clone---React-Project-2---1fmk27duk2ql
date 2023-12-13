@@ -1,16 +1,23 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { ModalContext } from "../../context/modalContext";
+import useFetchList from "../../customHooks/useFetchList";
 
 
 
 
 export default function Navbar() {
+    const {productUrl}= useContext(ModalContext);
+
+    // console.log(productUrl.getList + "page=1&limit=300");
+    // const [productList, error]= useFetchList(productUrl.getList + "page=1&limit=100");
+    // console.log(productList)
 
     const navLinks= [
         {link: "WOMEN", route: "/women"},
         {link: "MEN", route: "/men"},
         {link: "KIDS", route: "/kids"}
     ];
-
 
     return (
         <div className="text-[20px] bc-red w-full text-white">
@@ -38,7 +45,7 @@ export default function Navbar() {
                                     <NavLink key={link} to={route} className={({ isActive }) =>
                                         isActive ? "bg-white font-grey w-1/3 lg:w-min"
                                          : 
-                                        "w-1/3 bc-red text-white border-x-[0.5px] border-black lg:w-min"}>
+                                        "w-1/3 bc-red text-white border-x-[0.5px] border-black hover:bg-[#df7c7c] lg:w-min"}>
                                             <div className="flex items-center justify-center w-full px-[25px] py-[12px]">
                                                 {link}
                                             </div>
@@ -50,12 +57,12 @@ export default function Navbar() {
                     
                     <Outlet />
 
-                    <div className="text-[13px] items-center hidden lg:flex">
+                    <div className="text-[13px] items-center hidden lg:flex xl:pr-[3.5rem]">
                         <div className="m-[10px]">
-                            <a href="#">TRACK ORDER</a>
+                            <Link to= {"/profile/orders"}>TRACK ORDER</Link>
                         </div>
                         <div className="m-[10px]">
-                            <a href="#">CONTACT US</a>
+                            <Link to= {"/"}>CONTACT US</Link>
                         </div>
                         <div className="m-[10px]">
                             <a href="https://play.google.com/store/apps/details?id=com.thesouledstore">DOWNLOAD APP</a>

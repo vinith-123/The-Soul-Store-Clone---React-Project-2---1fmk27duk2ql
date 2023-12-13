@@ -75,23 +75,23 @@ function ImageProvider({children}) {
         {
             men: [
                 {
-                    route: "men-sweatshirts",
+                    route: "men-shirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_DwEgJnT.jpg?format=webp&w=480&dpr=2.0",
                 },
                 {
-                    route: "explore/oversized-full-sleeve-tshirts",
+                    route: "men-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_2_03YHRD0.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "jackets",
+                    route: "men-tshirt",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_1_TojfZVA.jpg?format=webp&w=480&dpr=2.0",
                 },
                 {
-                    route: "oversized-tshirts",
+                    route: "men-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_1_DbTmKWy.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "polo-tshirts",
+                    route: "men-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_11_FRk0BHl.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
@@ -99,11 +99,11 @@ function ImageProvider({children}) {
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_4_Jb9QRd0.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "t-shirts",
+                    route: "men-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_3_SptA5Yt.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "shirts",
+                    route: "men-shirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_8_zBPNcKY.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
@@ -111,16 +111,16 @@ function ImageProvider({children}) {
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_7_GY0K5e7.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "cotton-pants",
+                    route: "men-track-pants",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_6_EV3hsHK.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "sweat-shorts",
+                    route: "men-shorts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_2_oKv3uni.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "men-footwear",
-                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_10_zBIug94.jpg?format=webp&w=360&dpr=2.0",
+                    route: "men-joggers",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/WebsiteTiles_Small_Tushar_men-version_5_53FufyZ.jpg?format=webp&w=480&dpr=1.3",
                 }
             ],
 

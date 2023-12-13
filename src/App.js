@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./styles/App.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "./components/homePage/navbar";
 import PageForMen from "./pages/homePage/pageForMen";
 import PageForWomen from "./pages/homePage/pageForWomen";
@@ -13,15 +13,38 @@ import LogIn from "./components/authenticationPage/logIn";
 import Whishlist from "./pages/user/whishlist";
 import Cart from "./pages/user/cart";
 import Error404 from "./pages/errorPage/error404";
+import ProfilePageForDeskTop from "./pages/profilePage/profilePageForDesktop";
+import ProfilePageForMobile from "./pages/profilePage/profilePageForMobile";
+import OrderSection from "./components/profilePage/ordersSection";
+import VoucherSection from "./components/profilePage/voucherSection";
+import PointsSection from "./components/profilePage/pointsSection";
+import MoneySection from "./components/profilePage/moneySection";
+import SaveCardSection from "./components/profilePage/saveCardSection";
+import EditProfileSection from "./components/profilePage/editProfileSection";
+import MembershipPage from "./pages/membershipPage/membershipPage";
+import { UserContext } from "./context/userContext";
+import ShirtsForMen from "./components/clothCategoryForMen/shirtsForMen";
+import TshirtsForMen from "./components/clothCategoryForMen/tshirtsForMen";
+import HoodiesForMen from "./components/clothCategoryForMen/hoodiesForMen";
+import TrackPantsForMen from "./components/clothCategoryForMen/trackPantsForMen";
+import ShortsForMen from "./components/clothCategoryForMen/shortsForMen";
+import JoggersForMen from "./components/clothCategoryForMen/joggersForMen";
+import JeansForMen from "./components/clothCategoryForMen/jeansForMen";
+import Product from "./pages/productPage/product";
+import { filterCartData, filterwishlistData } from "./utils/filterFunctions";
+import { fetchAuthorizedData, fetch_data } from "./utils/utilities";
 
 function App() {
 
-  const {setIsMobile}= useContext(ModalContext);
+  const {setIsMobile, isMobile, cartUrl, whishlistUrl}= useContext(ModalContext);
+  const {save_user_and_token, isAuthenticated, setIsAuthenticated, projectId, 
+        setItemsInCart, setWhishlistItems, whishlistItems, itemsInCart}= useContext(UserContext);
 
   const navigate= useNavigate();
 
-  useEffect(() => {
+  console.log(whishlistItems, itemsInCart);
 
+  useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 900) {
         setIsMobile(true);
@@ -42,6 +65,52 @@ function App() {
     navigate("/men");
   }, []);
 
+  // to get user info from local storage
+  
+  useEffect(() => {
+    const authToken= localStorage.getItem("authToken");
+    // console.log("token: ", api);
+
+    if(authToken) {
+    const user= localStorage.getItem("userInfo");
+    const parsedUser= JSON.parse(user);
+
+      save_user_and_token(parsedUser, authToken);
+      setIsAuthenticated(true);
+      navigate("/men");
+    }
+  }, [])
+
+  // te get cart items
+  useEffect(() => {
+    const authToken= localStorage.getItem("authToken");
+
+    if(authToken) {
+      try {
+        fetchAuthorizedData(cartUrl.getList, authToken, projectId, filterCartData, setItemsInCart);
+
+        // console.log("cart data: ", itemsInCart); 
+      } catch(error) {
+          console.log("error while fetching cart items: ", error);
+      }
+    }
+  }, []);
+
+  // to get whishlist items
+  useEffect(() => {
+    const authToken= localStorage.getItem("authToken");
+
+    if(authToken) { 
+      try {
+        fetchAuthorizedData(whishlistUrl.getList, authToken, projectId, filterwishlistData, setWhishlistItems);
+
+        // console.log("whishlist data: ", whishlistItems);        
+      } catch(error) {
+          console.log("error while fetching cart items: ", error);
+      }
+    }
+  }, []);
+
   return <div className="App">  
     <Navbar />  
 
@@ -50,14 +119,35 @@ function App() {
       <Route path="/men" element={<PageForMen />} />
       <Route path="/women" element={<PageForWomen />} />
       <Route path="/kids" element={<PageForKids />} />
+      <Route path="/mywhishlist" element= {<Whishlist />} />
+      <Route path="/cart" element= {<Cart />} />
+      <Route path="/membership" element= {<MembershipPage />} />
+      <Route path="/men-shirts" element= {<ShirtsForMen />} />
+      <Route path="/men-tshirts" element= {<TshirtsForMen />} />
+      <Route path="/men-hoodies" element= {<HoodiesForMen />} />
+      <Route path="/men-jeans" element= {<JeansForMen />} />
+      <Route path="/men-track-pants" element= {<TrackPantsForMen />} />
+      <Route path="/men-shorts" element= {<ShortsForMen />} />
+      <Route path="/men-joggers" element= {<JoggersForMen />} />
+
+      <Route path="/product/:productId" element= {<Product />} />
+
+
+      <Route path="/profile" element= {isMobile ? <ProfilePageForMobile/> : <ProfilePageForDeskTop />}>
+        <Route path="orders" element= {<OrderSection />} />
+        <Route path="my-gift-voucher" element= {<VoucherSection />} />
+        <Route path="points" element= {<PointsSection />} />
+        <Route path="money" element= {<MoneySection />} />
+        <Route path="my-saved-cards" element= {<SaveCardSection />} />
+        <Route path="profile" element= {<EditProfileSection />} />
+      </Route>
+
       <Route path="/authentication" element= {<AuthenticationPage />} >
         <Route path="register" element= {<SignUp />} />
         <Route path="login" element= {<LogIn />} />
       </Route>
-      <Route path="/mywhishlist" element= {<Whishlist />} />
-      <Route path="/cart" element= {<Cart />} />
-      <Route path="*" element= {<Error404 />} />
 
+      <Route path="*" element= {<Error404 />} />
     </Routes>
 
     <Footer />

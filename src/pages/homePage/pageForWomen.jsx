@@ -30,8 +30,12 @@ export default function PageForWomen() {
                     loop= {true} />
             </div> */}
 
-            <Categories list={categories[0].women} />
-            <OfficialMerchandise list={merchandise} />
+            <div className="max-w-[1500px] flex flex-col justify-center items-center">
+                <Categories list={categories[0].women} />
+                <OfficialMerchandise list={merchandise} />
+            </div>
+
+            
         </div>
     )
 }

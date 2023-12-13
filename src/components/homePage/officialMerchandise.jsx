@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 export default function OfficialMerchandise({list}) {
     return (
         <>
-            <div className="w-full">
+            <div className="w-full flex flex-col items-center ">
                 <p className="text-[18px] font-bold py-[1rem] w-full flex justify-center mt-[2rem] sm:text-[28px]">OFFICIAL MERCHANDISE</p>
 
-                <div className="overflow-x-scroll">
+                <div className="overflow-x-scroll w-full">
                     <ul className="flex p-[1rem] w-max">
                         {
                             list.map(item => {
