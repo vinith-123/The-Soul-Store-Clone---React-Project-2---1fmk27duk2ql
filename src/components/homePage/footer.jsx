@@ -62,7 +62,7 @@ export default function Footer() {
                 HOMEGROWN INDIAN BRAND
             </div>
 
-            <div className="flex justify-center text-[20px] py-[18px] source-sans-3
+            <div className="flex justify-center text-[19px] py-[18px] source-sans-3
                 md:text-[30px] lg:text-[48px]">
                 <p>Over</p>
                 <p className="font-bold ml-[10px]">6 Million</p>

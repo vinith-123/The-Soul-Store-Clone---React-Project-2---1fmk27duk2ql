@@ -113,7 +113,7 @@ export default function MembershipPage() {
                                 const {duration, perMonth, price, saving}= item;
 
                                 return(
-                                    <div className= {`w-[300px] h-[256px] rounded-[10px] mx-[2rem] border-[2px] border-[#707070]
+                                    <div key={price} className= {`w-[300px] h-[256px] rounded-[10px] mx-[2rem] border-[2px] border-[#707070]
                                         flex flex-col items-center m-[1rem] cursor-pointer
                                         ${index === 0 ? 
                                         "bg-white " : "bg-transparent "}`}>

@@ -123,72 +123,75 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
 
 
 
-export async function manageCart(cart, setCart, product, token, projectId, quantity, size) {
-    const isPresent= cart.some(item => item.productId === product.productId);
-
+export async function addInCart(cart, setCart, product, token, projectId, quantity, size) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
 
-    if(isPresent) {
+    try{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("projectID", `${projectId}`);
 
-        try{
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append("projectID", `${projectId}`);
+        var raw = JSON.stringify({
+            "quantity" : quantity,
+            "size": `${size}`
+        });
 
-            var requestOptions = {
-            method: 'DELETE',
-            headers: myHeaders,
-            redirect: 'follow'
-            };
+        var requestOptions = {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
 
-            const response= await fetch(baseUrl, requestOptions);
+        const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
+        // console.log("response: ", response)
 
-            if(response.ok) {
-                const data= cart.filter(item => item.productId !== product.productId);
-                setCart(data);
-            }
-            
-        } catch(error) {
-            console.log("error in deleting item from cart: ", error);
+        if(response.ok) {
+            const data= [...cart, {
+                productId: product.productId,
+                displayImage: product.displayImage,
+                productName: product.name,
+                price: product.price,
+                ratings: product.ratings,
+                size: size,
+                quantity: quantity,
+            }];
+            setCart(data);
         }
-    } else {
-        try{
-            var myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${token}`);
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("projectID", `${projectId}`);
-
-            var raw = JSON.stringify({
-                "quantity" : quantity,
-                "size": `${size}`
-            });
-
-            var requestOptions = {
-            method: 'PATCH',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-            };
-
-            const response= await fetch(baseUrl, requestOptions);
-
-            if(response.ok) {
-                const data= [...cart, {
-                    productId: product.productId,
-                    displayImage: product.displayImage,
-                    productName: product.name,
-                    price: product.price,
-                    ratings: product.ratings,
-                    size: size,
-                    quantity: quantity,
-                }];
-                setCart(data);
-            }
-        } catch(error) {
-            console.log("error in deleting item from cart: ", error);
-        }
+    } catch(error) {
+        console.log("error in deleting item from cart: ", error);
     }
+    
 }
 
+
+
+export async function removeFromCart(cart, setCart, product, token, projectId) {
+
+    const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
+
+    try{
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("projectID", `${projectId}`);
+
+        var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        const response= await fetch(baseUrl, requestOptions);
+
+        if(response.ok) {
+            const data= cart.filter(item => item.productId !== product.productId);
+            setCart(data);
+        }
+    } catch(error) {
+        console.log("error in deleting item from cart: ", error);
+    }
+    
+}
 

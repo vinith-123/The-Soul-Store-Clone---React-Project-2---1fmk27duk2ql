@@ -22,7 +22,7 @@ export default function Apparel({list}) {
 
     const {isMobile}= useContext(ModalContext);
     const {apparelForMen, apparelForWomen, apparelForKids}= useContext(TagContext);
-    const {isAuthenticated, setIsAuthenticated, save_user_and_token}= useContext(UserContext);
+    const {isAuthenticated, setIsAuthenticated, save_user_and_token, whishlistItems, itemsInCart}= useContext(UserContext);
 
     const [isHovered, setIsHovered]= useState(false);
     // const [isHoveredOnProfile, setIsHoveredOnProfile]= useState(false);
@@ -55,19 +55,19 @@ export default function Apparel({list}) {
 
     const [aboutSection, setAboutSection]= useState([
         {
-            title: "Careers", route: ""
+            title: "Careers", route: "careers"
         },
         {
-            title: "Store Near Me", route: ""
+            title: "Store Near Me", route: "store-near-me"
         },
         {
-            title: "About Us", route: ""
+            title: "About Us", route: "about-us"
         },
         {
-            title: "T&C", route: ""
+            title: "T&C", route: "t&c"
         },
         {
-            title: "Privacy Policy", route: ""
+            title: "Privacy Policy", route: "privacy-policy"
         },
     ])
 
@@ -108,7 +108,7 @@ export default function Apparel({list}) {
         });
     }
 
-    function menuModal() {
+    function sideBarMenu() {
         return (
             <div className="absolute bg-white top-[-3rem] left-0 w-full h-full z-20 sm:px-[1rem]">
                 <div className="flex justify-between items-center py-[1rem]">
@@ -185,21 +185,21 @@ export default function Apparel({list}) {
                                 <p className="cursor-pointer py-[10px]">My Profile</p>
                             </Link>
 
-                            <Link to={"/orders"}>
+                            <Link to={"/profile/orders"}>
                                 <p className="cursor-pointer py-[10px]">My Orders</p>
                             </Link>
                         </>
                     }
 
-                    <Link to={"/"}>
+                    <Link to={"/contact-us"}>
                         <p className="cursor-pointer py-[10px]">Contact Us</p>
                     </Link>
                     
-                    <Link to={"/"}>
+                    <Link to={"/faqs"}>
                         <p className="cursor-pointer py-[10px]">FAQs</p>
                     </Link>
 
-                    <Link to={"/"}>
+                    <Link to={"/community-initiatives"}>
                         <p className="cursor-pointer py-[10px]">Community Initiatives</p>
                     </Link>
                 </div>
@@ -281,18 +281,33 @@ export default function Apparel({list}) {
             <div className="flex items-center">
                 <Searchbar />
 
-                <Link to={"/mywhishlist"}>
-                    <div className="px-[8px] lg:px-[1rem] py-[16px] border-b-[5px] border-white 
+                <Link to={"/whishlist"}>
+                    <div className="relative px-[8px] lg:px-[1rem] py-[16px] border-b-[5px] border-white 
                         hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                         <Empty_heart width={"22px"} height={"22px"} color={"#585958"} />
+
+                        {
+                            whishlistItems.length > 0 &&
+                            <div className="absolute top-[10px] right-[5px] text-white bc-red rounded-full font-bold px-[5px]">
+                                {whishlistItems.length}
+                                
+                            </div>
+                        }
                     </div>
                 </Link>
                 
                 
                 <Link to={"/cart"}>
-                    <div className="px-[8px] lg:px-[1rem] py-[19px] border-b-[5px] border-white 
+                    <div className="relative px-[8px] lg:px-[1rem] py-[19px] border-b-[5px] border-white 
                         hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                         <CartIcon width={"22px"} height={"22px"} color={"#585958"} />
+                        {
+                            itemsInCart.length > 0 &&
+                            <div className="absolute top-[10px] right-[5px] text-white bc-red rounded-full font-bold px-[5px]">
+                                {itemsInCart.length}
+                                
+                            </div>
+                        }
                     </div>
                 </Link>
                 
@@ -378,7 +393,7 @@ export default function Apparel({list}) {
                         isClickedOnMenu &&
                         <>
                             {
-                                menuModal()
+                                sideBarMenu()
                             }
                         </>
                     }

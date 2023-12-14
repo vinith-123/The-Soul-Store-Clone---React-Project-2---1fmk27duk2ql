@@ -12,6 +12,8 @@ export default function useFetchSingleProduct(url) {
 
     const [data, setData]= useState([]);
     const [error, setError]= useState("");
+    const [isLoading, setIsLoading]= useState(false);
+
 
     function filterData(item) {
         return {
@@ -33,6 +35,7 @@ export default function useFetchSingleProduct(url) {
     }
 
     useEffect(() => {
+        setIsLoading(true);
         try {
             fetch_data(url, projectId)
             .then((data) => {
@@ -43,9 +46,11 @@ export default function useFetchSingleProduct(url) {
                 console.log("error in data: ", error);
             })
         } catch(error) {
-            console.log("error while fetching: ", error);
+            setError(error);
+        } finally {
+            setIsLoading(false);
         }
     }, [url]);
 
-    return [data, error];
+    return [data, error, isLoading];
 }

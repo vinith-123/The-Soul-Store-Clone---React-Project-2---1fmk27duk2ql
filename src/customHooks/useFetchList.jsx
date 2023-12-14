@@ -13,8 +13,10 @@ export default function useFetchList(url, mapFunction) {
 
     const [data, setData]= useState([]);
     const [error, setError]= useState("");
+    const [isLoading, setIsLoading]= useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         try {
             fetch_data(url, projectId)
             .then((data) => {
@@ -26,9 +28,11 @@ export default function useFetchList(url, mapFunction) {
                 console.log("error in data: ", error);
             })
         } catch(error) {
-            console.log("error while fetching: ", error);
+            setError(error);
+        } finally {
+            setIsLoading(false);
         }
     }, []);
 
-    return [data, error];
+    return [data, error, isLoading];
 }

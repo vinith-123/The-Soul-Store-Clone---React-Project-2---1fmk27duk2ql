@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { UserContext } from "../../context/userContext"
 import { Link } from "react-router-dom";
+import ProductCardForWishlist from "../../components/wishlist/productCardForWishlist";
 
 
 
@@ -11,8 +12,10 @@ export default function Whishlist() {
 
     const {whishlistItems, isAuthenticated}= useContext(UserContext);
 
+    // console.log("wishlist: ", whishlistItems);
+
     return (
-        <div>
+        <div className="w-full h-full flex items-center justify-center">
             {
                 whishlistItems.length === 0 ?
                 // empty whishlist
@@ -56,14 +59,27 @@ export default function Whishlist() {
                 :
                 
                 // non-empty whishlist
-                <div>
+                <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center h-full px-[5px] sm:px-[1rem] md:px-[2px]">
+                    <div className="w-full py-[1rem] text-[18px] font-grey flex justify-center md:justify-start md:px-[1rem] 2xl:text-[25px] 2xl:py-[2rem]">
+                        <p className="font-bold">My Wishlist</p>
+                        <p className="font-semibold ml-[5px]">({whishlistItems.length} items)</p>
+                    </div>
 
-                </div>
-                
+                    <div className="flex items-center justify-center">
+                        <ul className="flex flex-row flex-grow items-center flex-wrap">
+                            {
+                                whishlistItems.map(item => {
+
+                                    return (
+                                        <ProductCardForWishlist key={item.productId} product= {item} />
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                    
+                </div>       
             }
-            
-
-
         </div>
     )
 }

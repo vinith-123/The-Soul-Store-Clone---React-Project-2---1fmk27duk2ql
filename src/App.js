@@ -42,7 +42,7 @@ function App() {
 
   const navigate= useNavigate();
 
-  console.log(whishlistItems, itemsInCart);
+  // console.log(whishlistItems, itemsInCart);
 
   useEffect(() => {
     const handleResize = () => {
@@ -119,7 +119,7 @@ function App() {
       <Route path="/men" element={<PageForMen />} />
       <Route path="/women" element={<PageForWomen />} />
       <Route path="/kids" element={<PageForKids />} />
-      <Route path="/mywhishlist" element= {<Whishlist />} />
+      <Route path="/whishlist" element= {<Whishlist />} />
       <Route path="/cart" element= {<Cart />} />
       <Route path="/membership" element= {<MembershipPage />} />
       <Route path="/men-shirts" element= {<ShirtsForMen />} />

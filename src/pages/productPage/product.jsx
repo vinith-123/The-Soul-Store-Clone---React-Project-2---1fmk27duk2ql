@@ -6,7 +6,7 @@ import parse from 'html-react-parser';
 import ChevronUp from "../../assets/svg/chevronUp";
 import ChevronDown from "../../assets/svg/chevronDown";
 import ProductList from "../../components/homePage/productList";
-import { findProduct, manageWhishlist } from "../../utils/utilities";
+import { addInCart, findProduct, manageWhishlist } from "../../utils/utilities";
 import { UserContext } from "../../context/userContext";
 
 
@@ -30,23 +30,25 @@ export default function Product() {
     const [isInCart, setIsInCart]= useState(false);
     const [isInWishlist, setIsInWishlist]= useState(false);
 
-    const [isError, setIsError]= useState("");
+    // const [buttonColor, setButtonColor]= useState('#e11b23');
 
+    const [isError, setIsError]= useState("");
     const [cart, setCart]= useState({
-        quantity: "0",
+        quantity: "1",
         size: "",
     })
 
     // console.log("cart: ", cart);
 
-    function handleChange(event) {
-        const target= event.target.value;
+    function handleChangeForCart(event) {
+        const target= event.target;
+        const value= event.target.value;
 
-        console.log(target);
+        // console.log(event);
         setCart((old) => {
             return {
                 ...old,
-                [target.id]: target.value,
+                [target.id]: value,
             }
         })
     }
@@ -61,7 +63,6 @@ export default function Product() {
         setIsInWishlist(isPresentInWishlist);
 
         // console.log(isInWishlist)
-
     }, [whishlistItems, itemsInCart, product])
 
     useEffect(() => {
@@ -80,7 +81,12 @@ export default function Product() {
 
     function varifyUserForCart() {
         if(token) {
-            manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId);
+            if(cart.size === "") {
+                setIsError(true);
+            } else {
+                addInCart(itemsInCart, setItemsInCart, product, token, projectId, cart.quantity, cart.size);
+                setIsError(false);
+            }
         } else {
             navigate("/authentication");
         }   
@@ -126,16 +132,25 @@ export default function Product() {
                             {
                                 product?.size?.map(item => {
                                     return (
-                                        <button id="size" value={item} key={item} className="flex items-center justify-center w-[3.5rem] h-[3.5rem] p-[1rem] border rounded-full mr-[1rem] cursror-pointer
-                                            font-semibold cursor-pointer
-                                            hover:border-[#e11b23] hover:bg-[#e11b23] hover:text-white"
-                                            onClick={(e) => handleChange(e)}>
+                                        <button id="size" value={item} key={item} 
+                                            className={`flex items-center justify-center w-[3.5rem] h-[3.5rem] p-[1rem] border rounded-full mr-[1rem] cursror-pointer
+                                            font-semibold cursor-pointer 
+                                            hover:border-[#e11b23] hover:bg-[#e11b23] hover:text-white`}
+                                            onClick={(e) => handleChangeForCart(e)}>
                                             {item}
                                         </button>
                                     )
                                 })
                             }
                         </div>
+
+                        {
+                            isError &&
+                            <div className="w-full bg-[#f2dede] rounded-[4px] text-[#a94442] border border-[#ebcccc]
+                                px-[1rem] py-[10px] lg:px-[1.5rem]">
+                                Please select a size.
+                            </div>
+                        }
 
                         <div className="flex items-center py-[10px]">
                             <p className="font-bold">Color: </p>
@@ -151,14 +166,14 @@ export default function Product() {
                                 </p>
 
                                 <p>/5.0</p> 
-                           </div>
-                            
+                           </div> 
                         </div>
+                        
                         <div className="flex items-center py-[10px]">
                             <p className="pr-[1rem]">Quantity</p>
 
                             <select id="quantity" className="border rounded-[5px] p-[5px]"
-                                onChange={(e) => handleChange(e)}>
+                                onChange={(e) => handleChangeForCart(e)}>
                                 <option value="1">01</option>
                                 <option value="2">02</option>
                                 <option value="3">03</option>
@@ -179,7 +194,7 @@ export default function Product() {
                         {
                             isInCart ?  
                             <Link to={"/cart"}>
-                                <p className={`flex items-center justify-center py-[5px] rounded-[3px] flex-grow flex-shrink
+                                <p className={`flex items-center justify-center py-[5px] px-[1.5rem] rounded-[3px] flex-grow flex-shrink
                                     border border-[#e11b23] rounded-[4px] cursor-pointer mt-[1rem] duration-500
                                     bc-green text-white hover:bg-white hover:text-[#117a7a] max-md:w-full`}>GO TO CART</p>
                             </Link>

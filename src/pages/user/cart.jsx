@@ -71,7 +71,7 @@ export default function Cart() {
                 :
 
                 <div>
-
+                    cart
                 </div>
             }
         </div>
