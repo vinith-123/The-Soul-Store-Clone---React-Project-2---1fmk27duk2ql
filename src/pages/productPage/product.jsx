@@ -103,7 +103,7 @@ export default function Product() {
                         product?.images?.map((item, index) => {
                             return (
                                 index < 4 &&  
-                                    <div key={item} className="w-[10rem] md:w-[12rem]
+                                    <div key={item} className="w-[10rem] bg-[#ffebe7] md:w-[12rem]
                                         lg:w-[15rem] xl:w-[25rem]">
                                         <img src={item} alt="No Image" />
                                     </div>

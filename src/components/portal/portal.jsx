@@ -2,10 +2,10 @@ import { createPortal } from "react-dom";
 
 
 
-export default function Portal({onClose, children}) {
+export default function Portal({children}) {
     // function handleClick(e) {
     //     if(e.target === e.currentTarget) {
-    //         onClose(e);
+    //         onClose();
     //     }
     // };
 

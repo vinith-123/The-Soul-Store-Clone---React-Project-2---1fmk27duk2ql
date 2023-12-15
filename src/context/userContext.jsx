@@ -13,6 +13,8 @@ function UserProvider({children}) {
     const [itemsInCart, setItemsInCart]= useState([]);
     const [whishlistItems, setWhishlistItems]= useState([]);
 
+    const [totalPrice, setTotalPrice]= useState(0);
+
     const [user, set_user]= useState(null);
     const [token, set_token]= useState(null);
 
@@ -30,7 +32,7 @@ function UserProvider({children}) {
         <UserContext.Provider value={{isAuthenticated, setIsAuthenticated, itemsInCart, setItemsInCart,
             whishlistItems, setWhishlistItems, projectId, username, setUserName, 
             firstLetterOfUser, setFirstLetterOfUser, save_user_and_token, 
-            user, set_user, token, set_token}}>
+            user, set_user, token, set_token, totalPrice, setTotalPrice}}>
             {children}
         </UserContext.Provider>
     )
