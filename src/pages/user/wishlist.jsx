@@ -8,7 +8,7 @@ import ProductCardForWishlist from "../../components/wishlist/productCardForWish
 
 
 
-export default function Whishlist() {
+export default function Wishlist() {
 
     const {whishlistItems, isAuthenticated}= useContext(UserContext);
 

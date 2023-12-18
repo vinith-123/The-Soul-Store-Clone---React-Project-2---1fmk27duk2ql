@@ -1,8 +1,16 @@
+import { useContext } from "react"
+import { UserContext } from "../../context/userContext"
+
  
 
 
 
 export default function EditProfileSection() {
+
+    const {user}= useContext(UserContext);
+
+    // console.log("user data: ", user);
+
     return (
         <div className="w-full pl-[3rem] text-[15px] text-black">
             <p className="text-[#a7a9ac]">EDIT PROFILE</p>
@@ -11,8 +19,8 @@ export default function EditProfileSection() {
                <div className="p-[2rem] border">
                     <p>Email Id</p>
                     <p className="bg-[#eceeef] border border-[#ccc] rounded-[10px] px-[1rem] mt-[5px] 
-                        py-[5px] w-min cursor-not-allowed">
-                        abcd@gmail.com
+                        py-[5px] w-min pointer-events-none font-grey">
+                        {user?.email}
                     </p>
                </div>
 

@@ -14,7 +14,7 @@ export default function SizeModal({item, isOpen, onClose}) {
     return (
 
         <Portal>
-            <div className="flex backdrop-brightness-[0.99] pointer-events-none items-center justify-center w-full md:w-[360px] z-10">
+            <div className="flex backdrop-brightness-[0.99] pointer-events-none items-center justify-center w-full md:w-[360px]">
                 <div className="rounded-lg md:scale-150 flex flex-col shadow-md items-center justify-center bg-white text-[8px]">
                     <div className="relative px-[1rem] pt-[1.5rem] pb-[1rem] flex font-grey border-b border-[#999]">
                         <div className="w-[2.5rem] h-[2.5rem] bg-[#ffebe7]"> 
@@ -28,7 +28,7 @@ export default function SizeModal({item, isOpen, onClose}) {
                             <p className="text-[12px] font-bold">₹ {price}</p>
                         </div>
 
-                        <div className="absolute top-[5px] right-1/2 cursor-pointer">
+                        <div className="absolute top-[5px] right-1/2 cursor-pointer" onClick={() => console.log("clicked")}>
                             <CloseButton width={"16px"} height={"16px"} color={"#000000"} effect={"hover:fill-[#e11b23]"} />
                         </div>
                     </div>

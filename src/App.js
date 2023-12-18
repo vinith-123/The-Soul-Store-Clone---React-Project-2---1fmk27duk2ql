@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./styles/App.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Navbar from "./components/homePage/navbar";
 import PageForMen from "./pages/homePage/pageForMen";
 import PageForWomen from "./pages/homePage/pageForWomen";
@@ -10,7 +10,6 @@ import Footer from "./components/homePage/footer";
 import AuthenticationPage from "./pages/loginPage/authenticationPage";
 import SignUp from "./components/authenticationPage/signUp";
 import LogIn from "./components/authenticationPage/logIn";
-import Whishlist from "./pages/user/whishlist";
 import Cart from "./pages/user/cart";
 import Error404 from "./pages/errorPage/error404";
 import ProfilePageForDeskTop from "./pages/profilePage/profilePageForDesktop";
@@ -32,13 +31,15 @@ import JoggersForMen from "./components/clothCategoryForMen/joggersForMen";
 import JeansForMen from "./components/clothCategoryForMen/jeansForMen";
 import Product from "./pages/productPage/product";
 import { filterCartData, filterwishlistData } from "./utils/filterFunctions";
-import { fetchAuthorizedData, fetch_data } from "./utils/utilities";
+import { fetchAuthorizedData } from "./utils/utilities";
+import Wishlist from "./pages/user/wishlist";
+import ArtSection from "./components/profilePage/artSection";
 
 function App() {
 
   const {setIsMobile, isMobile, cartUrl, whishlistUrl}= useContext(ModalContext);
   const {save_user_and_token, isAuthenticated, setIsAuthenticated, projectId, 
-        setItemsInCart, setWhishlistItems, whishlistItems, itemsInCart}= useContext(UserContext);
+        setItemsInCart, setWhishlistItems, whishlistItems, itemsInCart, setTotalPrice}= useContext(UserContext);
 
   const navigate= useNavigate();
 
@@ -87,7 +88,7 @@ function App() {
 
     if(authToken) {
       try {
-        fetchAuthorizedData(cartUrl.getList, authToken, projectId, filterCartData, setItemsInCart);
+        fetchAuthorizedData(cartUrl.getList, authToken, projectId, filterCartData, setItemsInCart, setTotalPrice);
 
         // console.log("cart data: ", itemsInCart); 
       } catch(error) {
@@ -119,7 +120,7 @@ function App() {
       <Route path="/men" element={<PageForMen />} />
       <Route path="/women" element={<PageForWomen />} />
       <Route path="/kids" element={<PageForKids />} />
-      <Route path="/whishlist" element= {<Whishlist />} />
+      <Route path="/wishlist" element= {<Wishlist />} />
       <Route path="/cart" element= {<Cart />} />
       <Route path="/membership" element= {<MembershipPage />} />
       <Route path="/men-shirts" element= {<ShirtsForMen />} />
@@ -131,6 +132,8 @@ function App() {
       <Route path="/men-joggers" element= {<JoggersForMen />} />
 
       <Route path="/product/:productId" element= {<Product />} />
+      
+      <Route path="/submit-art-work" element= {<ArtSection />} />
 
 
       <Route path="/profile" element= {isMobile ? <ProfilePageForMobile/> : <ProfilePageForDeskTop />}>

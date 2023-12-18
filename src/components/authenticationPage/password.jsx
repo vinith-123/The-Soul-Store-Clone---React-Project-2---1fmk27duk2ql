@@ -22,11 +22,13 @@ export default function Password({callbackFunction, placeholderText, isPasswordC
                     <div className="absolute right-[13px] top-[7px]">
                         {
                             isPasswordHidden ? 
-                                <div onClick= {() => set_hiddenness_of_password(false)}>
+                                <div className="cursor-pointer"
+                                     onClick= {() => set_hiddenness_of_password(false)}>
                                     <FilledEye width= {"20px"} height={"20px"}  />
                                 </div> 
                                 : 
-                                <div onClick= {() => set_hiddenness_of_password(true)}>
+                                <div className="cursor-pointer"
+                                     onClick= {() => set_hiddenness_of_password(true)}>
                                     <FilledSlashedEye width= {"20px"} height={"20px"} />
                                 </div>
                         }

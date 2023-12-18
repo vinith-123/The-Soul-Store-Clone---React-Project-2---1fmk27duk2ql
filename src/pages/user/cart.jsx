@@ -1,8 +1,10 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../context/userContext"
 import { Link } from "react-router-dom";
 import ProductCardForCart from "../../components/cart/productCardForCart";
 import OrderSectionForCart from "../../components/cart/orderSectionForCart";
+import Empty_heart from "../../assets/svg/emptyHeart";
+import ChevronRight from "../../assets/svg/chevronRight";
 
 
 
@@ -10,10 +12,21 @@ import OrderSectionForCart from "../../components/cart/orderSectionForCart";
 
 
 export default function Cart() {
-    const {itemsInCart, isAuthenticated}= useContext(UserContext);
+    const {itemsInCart, setTotalPrice, isAuthenticated}= useContext(UserContext);
+
+    // const price= itemsInCart?.reduce((accumulator, item) => {
+    //     return accumulator + item?.price;
+    //     // console.log("price: ", item.price);
+    // }, 0)
+
+    // useEffect(() => {
+    //     setTotalPrice(price);
+    // }, [])
+
+    // const [price, setPrice]= useState(0);
 
 
-    // console.log(itemsInCart);
+    // console.log("cart: ", price);
 
     return(
         <div className="flex flex-col items-center justify-center">
@@ -76,26 +89,45 @@ export default function Cart() {
                 :
 
                 <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
-                    <div className="my-[1rem] flex flex-col md:flex-row">
+                    <div className=" my-[1rem] flex flex-col md:flex-row">
                         {/* cart items */}
-                        <div>
+                        <div className="mb-[1rem] lg:w-[500px] xl:w-[700px]">
                             {
                                 itemsInCart.map((item, index) => {
                                     return (
-                                        <ProductCardForCart key={item.productId} product= {item} />
+                                        <ProductCardForCart key={index} product= {item} />
                                     )
                                 })
                             }
+
+                           <div className="mt-[1rem]">
+                                <Link to={"/wishlist"}>
+                                    <div className="flex justify-between items-center cursor-pointer border-[2px] border-[#f2f2f2]
+                                        font-grey p-[1rem] text-[14px] font-bold">
+                                        <div className="flex items-center">
+                                            <div className="mt-[-3px] flex items-center">
+                                                <Empty_heart width= {"20px"} height={"20px"} color= {"#58595b"} />
+                                            </div>
+
+                                            <p className="ml-[8px]">ADD FROM WISHLIST</p>
+                                        </div>
+
+                                        <div>
+                                            <ChevronRight width= {"17px"} height={"17px"} color={"#58595b"} />
+                                        </div>
+                                    </div>
+                                </Link>
+                           </div>
+                            
+                            
                         </div>
                         
-                        {/* oreder section */}
-                        <div>
-                            <OrderSectionForCart/>
-                        </div>
+                        {/* oreder section */}    
+                        <OrderSectionForCart/>
+                        
                     </div>
                 </div>
             }
         </div>
     )
 }
-

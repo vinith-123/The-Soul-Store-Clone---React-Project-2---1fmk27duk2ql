@@ -281,7 +281,7 @@ export default function Apparel({list}) {
             <div className="flex items-center">
                 <Searchbar />
 
-                <Link to={"/whishlist"}>
+                <Link to={"/wishlist"}>
                     <div className="relative px-[8px] lg:px-[1rem] py-[16px] border-b-[5px] border-white 
                         hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                         <Empty_heart width={"22px"} height={"22px"} color={"#585958"} />
@@ -317,7 +317,7 @@ export default function Apparel({list}) {
                     <div className="relative" 
                         onMouseOver={() => setIsHovered(true)}
                         onMouseOut={() => setIsHovered(false)}>
-                        <Link to={isAuthenticated ? "/profile" : "/authentication"}>
+                        <Link to={isAuthenticated ? "/profile/orders" : "/authentication"}>
                             <div className="px-[10px] lg:px-[1rem] py-[19px] border-b-[5px] border-white 
                             hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                                 <PersonFilled width={"22px"} height={"22px"} color={"#585958"} />

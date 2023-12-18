@@ -28,7 +28,7 @@ export async function fetch_data(url, projectId) {
     }
 }
 
-export async function fetchAuthorizedData(url, authToken, projectId, filterFunction, setData) {
+export async function fetchAuthorizedData(url, authToken, projectId, filterFunction, setData, setPrice) {
     var myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${authToken}`);
         myHeaders.append("projectID", projectId);
@@ -42,9 +42,14 @@ export async function fetchAuthorizedData(url, authToken, projectId, filterFunct
         const response= await fetch(url, requestOptions);
         const data= await response.json();
 
+        // console.log(data.data)
+
 
         const modifiedData= filterFunction(data.data);
+        // console.log("modified data: ", modifiedData);
+
         setData(modifiedData);   
+        setPrice && setPrice(data?.data?.totalPrice)
 }
 
 export function findProduct(list, productId) {
@@ -75,7 +80,7 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
             redirect: 'follow'
             };
 
-            const response= await fetch(baseUrl, requestOptions);
+            const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
 
             if(response.ok) {
                 const data= wishlist.filter(item => item.productId !== product.productId);
@@ -123,7 +128,7 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
 
 
 
-export async function addInCart(cart, setCart, product, token, projectId, quantity, size) {
+export async function addInCart(cart, setCart, product, setPrice, token, projectId, quantity, size) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
 
@@ -146,10 +151,14 @@ export async function addInCart(cart, setCart, product, token, projectId, quanti
         };
 
         const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
+        const data= await response.json();
+
+        // console.log("added: ", data.data);
         // console.log("response: ", response)
+        // console.log("product id: ", product.productId);
 
         if(response.ok) {
-            const data= [...cart, {
+            const newList= [...cart, {
                 productId: product.productId,
                 displayImage: product.displayImage,
                 productName: product.name,
@@ -158,7 +167,9 @@ export async function addInCart(cart, setCart, product, token, projectId, quanti
                 size: size,
                 quantity: quantity,
             }];
-            setCart(data);
+            setCart(newList);
+
+            setPrice(data?.data?.totalPrice);
         }
     } catch(error) {
         console.log("error in deleting item from cart: ", error);
@@ -168,7 +179,7 @@ export async function addInCart(cart, setCart, product, token, projectId, quanti
 
 
 
-export async function removeFromCart(cart, setCart, product, token, projectId) {
+export async function removeFromCart(cart, setCart, product, setPrice, token, projectId) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
 
@@ -183,11 +194,16 @@ export async function removeFromCart(cart, setCart, product, token, projectId) {
         redirect: 'follow'
         };
 
-        const response= await fetch(baseUrl, requestOptions);
+        const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
+        const data= await response.json();
+
+        // console.log("removed: ", data.data);
 
         if(response.ok) {
-            const data= cart.filter(item => item.productId !== product.productId);
-            setCart(data);
+            const newList= cart.filter(item => item.productId !== product.productId);
+
+            setCart(newList);
+            setPrice(data?.data?.totalPrice);
         }
     } catch(error) {
         console.log("error in deleting item from cart: ", error);

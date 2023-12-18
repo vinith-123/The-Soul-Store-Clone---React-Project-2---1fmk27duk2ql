@@ -39,7 +39,7 @@ export default function ProfilePageForMobile() {
                             return; 
                         }
                         return (
-                            <NavLink to={`${route}`} 
+                            <NavLink to={`/profile/${route}`} 
                                 className={({isActive}) => isActive ? "font-red" : ""}>
                                 <div key={title} className={`p-[1rem] hover:text-[#e11b23] 
                                     ${index < optionsInAccountSection.length - 1 ? "border-b-[2px] border-[#eee]" : ""}`}>

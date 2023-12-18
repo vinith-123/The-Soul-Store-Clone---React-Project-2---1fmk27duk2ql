@@ -26,8 +26,9 @@ function UserProvider({children}) {
         set_token(token);
     }
 
+    // console.log("total price in global: ", totalPrice);
 
-
+    // console.log(user)
     return(
         <UserContext.Provider value={{isAuthenticated, setIsAuthenticated, itemsInCart, setItemsInCart,
             whishlistItems, setWhishlistItems, projectId, username, setUserName, 

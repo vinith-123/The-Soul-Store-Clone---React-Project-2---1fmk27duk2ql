@@ -5,6 +5,8 @@ import { ModalContext } from "../../context/modalContext";
 import CloseButton from "../../assets/svg/closeButton";
 import Portal from "../portal/portal";
 import SizeModal from "../modals/sizeModal";
+import { manageWhishlist } from "../../utils/utilities";
+import { UserContext } from "../../context/userContext";
 
 
 
@@ -13,11 +15,20 @@ import SizeModal from "../modals/sizeModal";
 export default function ProductCardForWishlist({product}) {
 
     const {productUrl}= useContext(ModalContext);
+    const {whishlistItems, setWhishlistItems, token, projectId}= useContext(UserContext);
+
     const {productId, displayImage, price, productName, ratings}= product;
 
     const [isModalOpen, setIsModalOpen]= useState(false);
 
     const [productDetails, error, isLoading]= useFetchSingleProduct(productUrl.getProduct + `${productId}`);
+
+    function handleEvent(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId);
+    }
     
     // console.log("product: ", productDetails)
     return (
@@ -33,9 +44,9 @@ export default function ProductCardForWishlist({product}) {
                     <img src={displayImage} alt= "Image Not Available" 
                         className="w-full h-full rounded-t-[2px] duration-500 hover:scale-110" />
 
-                    <div className="absolute top-[7px] right-[7px] rounded-full bg-white 
+                    <div className="absolute top-[7px] right-[7px] rounded-full bg-white z-60
                         opacity-60 cursor-pointer hover:opacity-100"
-                        onClick={(e) => e.stopPropagation()}>
+                        onClick={(e) => handleEvent(e)}>
                         <CloseButton width={"22px"} height={"22px"} color={"#000000"} />
                     </div>
                 </div>

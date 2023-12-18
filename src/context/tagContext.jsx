@@ -13,7 +13,6 @@ function TagProvider({children}) {
         {title: "TSS Money", route: "money"},
         {title: "Saved Cards", route: "my-saved-cards"},
         {title: "Profile", route: "profile"},
-        {title: "Submit Design", route: "submit-art-work"},
     ]
 
     const [apparelForMen, setApparelForMen]= useState(

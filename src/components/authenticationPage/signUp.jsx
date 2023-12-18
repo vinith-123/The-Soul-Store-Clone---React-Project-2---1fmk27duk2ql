@@ -80,9 +80,11 @@ export default function SignUp() {
 
     async function sign_up(userInfo) {
         try {
+            
             var myHeaders = new Headers();
-            myHeaders.append("projectID", {projectId});
+
             myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("projectID", {projectId});
         
             const url = "https://academics.newtonschool.co/api/v1/user/signup";
             var payload = {
@@ -90,11 +92,13 @@ export default function SignUp() {
             };
         
             var requestOptions = {
-                method: "POST",
+                method: 'POST',
                 headers: myHeaders,
                 body: JSON.stringify(payload),
-                redirect: "follow",
+                redirect: 'follow',
             };
+
+            // console.log("data: ", payload);
         
             const response = await fetch(url, requestOptions);
 
@@ -109,13 +113,13 @@ export default function SignUp() {
                 localStorage.setItem("userInfo", loginData);
 
                 setIsAuthenticated(true);
-                set_signupform_state();
+                save_user_and_token(loginData, token);
                 navigate("/men");
             } else {
-                set_error_state("Registration failed.");
+                set_error_state("Registration failed");
             }
         } catch (error) {
-          console.log(error);
+          console.log("error during sign-up: ", error);
         }
     }
 

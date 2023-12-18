@@ -17,7 +17,7 @@ import { UserContext } from "../../context/userContext";
 export default function Product() {
 
     const {productUrl}= useContext(ModalContext);
-    const {whishlistItems, setWhishlistItems, setItemsInCart, itemsInCart, token, projectId}= useContext(UserContext);
+    const {whishlistItems, setWhishlistItems, setItemsInCart, setTotalPrice, itemsInCart, token, projectId}= useContext(UserContext);
 
     const {productId}= useParams();
     const navigate= useNavigate();
@@ -33,6 +33,9 @@ export default function Product() {
     // const [buttonColor, setButtonColor]= useState('#e11b23');
 
     const [isError, setIsError]= useState("");
+
+    const [choosenSize, setChoosenSize]= useState("");
+    
     const [cart, setCart]= useState({
         quantity: "1",
         size: "",
@@ -43,6 +46,10 @@ export default function Product() {
     function handleChangeForCart(event) {
         const target= event.target;
         const value= event.target.value;
+
+        if(target.id === "size") {
+            setChoosenSize(value);
+        }
 
         // console.log(event);
         setCart((old) => {
@@ -61,6 +68,8 @@ export default function Product() {
 
         setIsInCart(isPresentInCart);
         setIsInWishlist(isPresentInWishlist);
+
+        // isInCart && setChoosenSize(product)
 
         // console.log(isInWishlist)
     }, [whishlistItems, itemsInCart, product])
@@ -84,7 +93,7 @@ export default function Product() {
             if(cart.size === "") {
                 setIsError(true);
             } else {
-                addInCart(itemsInCart, setItemsInCart, product, token, projectId, cart.quantity, cart.size);
+                addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, cart.quantity, cart.size);
                 setIsError(false);
             }
         } else {
@@ -134,7 +143,7 @@ export default function Product() {
                                     return (
                                         <button id="size" value={item} key={item} 
                                             className={`flex items-center justify-center w-[3.5rem] h-[3.5rem] p-[1rem] border rounded-full mr-[1rem] cursror-pointer
-                                            font-semibold cursor-pointer 
+                                            font-semibold cursor-pointer ${choosenSize === item ? "bc-red border-[#e11b23] text-white" : ""}
                                             hover:border-[#e11b23] hover:bg-[#e11b23] hover:text-white`}
                                             onClick={(e) => handleChangeForCart(e)}>
                                             {item}
@@ -195,7 +204,7 @@ export default function Product() {
                             isInCart ?  
                             <Link to={"/cart"}>
                                 <p className={`flex items-center justify-center py-[5px] px-[1.5rem] rounded-[3px] flex-grow flex-shrink
-                                    border border-[#e11b23] rounded-[4px] cursor-pointer mt-[1rem] duration-500
+                                    border border-[#117a7a] rounded-[4px] cursor-pointer mt-[1rem] duration-500
                                     bc-green text-white hover:bg-white hover:text-[#117a7a] max-md:w-full`}>GO TO CART</p>
                             </Link>
                             :
