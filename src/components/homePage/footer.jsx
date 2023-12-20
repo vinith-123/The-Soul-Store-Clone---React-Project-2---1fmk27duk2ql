@@ -89,9 +89,9 @@ export default function Footer() {
                 </div>
             }
 
-            <div className="bg-[#e6e7e8] font-grey w-full px-[2rem] py-[1rem]
+            <div className="bg-[#e6e7e8] font-grey w-full px-[1rem] py-[1rem]
                 border-b-[2px] border-b-[#a3a3a8]
-                lg:px-[4rem] xl:px-[10rem]">
+                sm:px-[2rem] md:px-[3rem] lg:px-[4rem] xl:px-[10rem]">
 
                     {/* tags */}
                 <div className="flex flex-col items-center justify-center w-full">

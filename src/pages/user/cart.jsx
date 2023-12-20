@@ -38,14 +38,14 @@ export default function Cart() {
                 </div>
 
                 <div className="flex items-center">
-                    <p className="px-[5px]">- - - - - - - - - - - - -</p>
+                    <p className="px-[5px]">- - - - - - - - - -</p>
                     <div className="font-green pointer-events-none">
                         <p className="px-[5px]">ADDRESS</p>
                     </div>
                 </div>
                 
                 <div className="flex items-center">
-                    <p className="px-[5px]">- - - - - - - - - - - - -</p>
+                    <p className="px-[5px]">- - - - - - - - - -</p>
                     <div className="font-green pointer-events-none">
                         <p className="px-[5px]">PAYMENT</p>
                     </div>
@@ -89,9 +89,9 @@ export default function Cart() {
                 :
 
                 <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
-                    <div className=" my-[1rem] flex flex-col md:flex-row">
+                    <div className=" px-[5px] my-[1rem] flex flex-col md:flex-row">
                         {/* cart items */}
-                        <div className="mb-[1rem] lg:w-[500px] xl:w-[700px]">
+                        <div className="mb-[1rem] w-full lg:w-[500px] xl:w-[700px]">
                             {
                                 itemsInCart.map((item, index) => {
                                     return (

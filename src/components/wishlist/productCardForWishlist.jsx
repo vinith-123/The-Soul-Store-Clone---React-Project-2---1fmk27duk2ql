@@ -86,10 +86,7 @@ export default function ProductCardForWishlist({product}) {
                 <div className="absolute">
                     <SizeModal item= {productDetails} isOpen= {isModalOpen} onClose= {() => setIsModalOpen(false)} />
                 </div>
-            }
-
-            
-            
+            }            
         </li>
     )
 }

@@ -34,11 +34,12 @@ import { filterCartData, filterwishlistData } from "./utils/filterFunctions";
 import { fetchAuthorizedData } from "./utils/utilities";
 import Wishlist from "./pages/user/wishlist";
 import ArtSection from "./components/profilePage/artSection";
+import AddressSection from "./components/profilePage/addressSection";
 
 function App() {
 
   const {setIsMobile, isMobile, cartUrl, whishlistUrl}= useContext(ModalContext);
-  const {save_user_and_token, isAuthenticated, setIsAuthenticated, projectId, 
+  const {save_user_and_token, isAuthenticated, setIsAuthenticated, projectId, user,
         setItemsInCart, setWhishlistItems, whishlistItems, itemsInCart, setTotalPrice}= useContext(UserContext);
 
   const navigate= useNavigate();
@@ -142,8 +143,17 @@ function App() {
         <Route path="points" element= {<PointsSection />} />
         <Route path="money" element= {<MoneySection />} />
         <Route path="my-saved-cards" element= {<SaveCardSection />} />
-        <Route path="profile" element= {<EditProfileSection />} />
+        <Route path=":username" element= {<EditProfileSection />} />
+        <Route path="address" element= {<AddressSection />} />
       </Route>
+
+      <Route path="orders" element= {<OrderSection />} />
+      <Route path="my-gift-voucher" element= {<VoucherSection />} />
+      <Route path="points" element= {<PointsSection />} />
+      <Route path="money" element= {<MoneySection />} />
+      <Route path="my-saved-cards" element= {<SaveCardSection />} />
+      <Route path=":username" element= {<EditProfileSection />} />
+      <Route path="address" element= {<AddressSection />} />
 
       <Route path="/authentication" element= {<AuthenticationPage />} >
         <Route path="register" element= {<SignUp />} />

@@ -1,13 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Logo from "../../assets/svg/logo";
 import { useContext } from "react";
 import { TagContext } from "../../context/tagContext";
+import { UserContext } from "../../context/userContext";
 
 
 
 
 export default function ProfilePageForMobile() {
     const {optionsInAccountSection}= useContext(TagContext);
+    const {user}= useContext(UserContext);
 
     return (
         <div className="bg-white w-full h-full z-20">
@@ -31,17 +33,20 @@ export default function ProfilePageForMobile() {
                 </div>
             </div>
 
-            <nav>
+            <nav className="font-bold">
+                <NavLink to={`/${user?.name}`} 
+                    className={({isActive}) => isActive ? "font-red" : ""}>
+                    <div className={`p-[1rem] border-b-[2px] border-[#eee] hover:text-[#e11b23]`}>
+                        <p>Profile</p>
+                    </div>
+                </NavLink> 
                 {
                     optionsInAccountSection.map((item, index) => {
                         const {title, route}= item;
-                        if(index == optionsInAccountSection.length - 1) {
-                            return; 
-                        }
                         return (
-                            <NavLink to={`/profile/${route}`} 
+                            <NavLink to={`/${route}`}  key={title}
                                 className={({isActive}) => isActive ? "font-red" : ""}>
-                                <div key={title} className={`p-[1rem] hover:text-[#e11b23] 
+                                <div className={`p-[1rem] hover:text-[#e11b23] 
                                     ${index < optionsInAccountSection.length - 1 ? "border-b-[2px] border-[#eee]" : ""}`}>
                                     <p>{title}</p>
                                 </div>

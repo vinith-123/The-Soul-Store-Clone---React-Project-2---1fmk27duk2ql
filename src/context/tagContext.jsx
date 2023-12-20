@@ -12,7 +12,6 @@ function TagProvider({children}) {
         {title: "TSS Points", route: "points"},
         {title: "TSS Money", route: "money"},
         {title: "Saved Cards", route: "my-saved-cards"},
-        {title: "Profile", route: "profile"},
     ]
 
     const [apparelForMen, setApparelForMen]= useState(

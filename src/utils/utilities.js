@@ -61,8 +61,8 @@ export function findProduct(list, productId) {
 
 
 
-export async function manageWhishlist(wishlist, setWishlist, product, token, projectId) {
-    const isPresent= wishlist.some(item => item.productId === product.productId);
+export async function manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId) {
+    const isPresent= whishlistItems.some(item => item.productId === product.productId);
 
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/wishlist/"
@@ -83,8 +83,8 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
             const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
 
             if(response.ok) {
-                const data= wishlist.filter(item => item.productId !== product.productId);
-                setWishlist(data);
+                const data= whishlistItems.filter(item => item.productId !== product.productId);
+                setWhishlistItems(data);
             }
             
         } catch(error) {
@@ -111,14 +111,14 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
             const response= await fetch(baseUrl, requestOptions);
 
             if(response.ok) {
-                const data= [...wishlist, {
+                const data= [...whishlistItems, {
                     productId: product.productId,
                     displayImage: product.displayImage,
                     productName: product.name,
                     price: product.price,
                     ratings: product.ratings,
                 }];
-                setWishlist(data);
+                setWhishlistItems(data);
             }
         } catch(error) {
             console.log("error in deleting item from wishlist: ", error);
@@ -128,7 +128,7 @@ export async function manageWhishlist(wishlist, setWishlist, product, token, pro
 
 
 
-export async function addInCart(cart, setCart, product, setPrice, token, projectId, quantity, size) {
+export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, quantity, size) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
 
@@ -158,7 +158,7 @@ export async function addInCart(cart, setCart, product, setPrice, token, project
         // console.log("product id: ", product.productId);
 
         if(response.ok) {
-            const newList= [...cart, {
+            const newList= [...itemsInCart, {
                 productId: product.productId,
                 displayImage: product.displayImage,
                 productName: product.name,
@@ -167,19 +167,18 @@ export async function addInCart(cart, setCart, product, setPrice, token, project
                 size: size,
                 quantity: quantity,
             }];
-            setCart(newList);
+            setItemsInCart(newList);
 
-            setPrice(data?.data?.totalPrice);
+            setTotalPrice(data?.data?.totalPrice);
         }
     } catch(error) {
         console.log("error in deleting item from cart: ", error);
-    }
-    
+    }    
 }
 
 
 
-export async function removeFromCart(cart, setCart, product, setPrice, token, projectId) {
+export async function removeFromCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
 
@@ -200,10 +199,10 @@ export async function removeFromCart(cart, setCart, product, setPrice, token, pr
         // console.log("removed: ", data.data);
 
         if(response.ok) {
-            const newList= cart.filter(item => item.productId !== product.productId);
+            const newList= itemsInCart.filter(item => item.productId !== product.productId);
 
-            setCart(newList);
-            setPrice(data?.data?.totalPrice);
+            setItemsInCart(newList);
+            setTotalPrice(data?.data?.totalPrice);
         }
     } catch(error) {
         console.log("error in deleting item from cart: ", error);

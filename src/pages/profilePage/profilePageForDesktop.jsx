@@ -39,7 +39,7 @@ export default function ProfilePageForDeskTop() {
 
     return (
         <div className="w-full py-[2rem] px-[15rem]">
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center mr-[3rem]">
                 <div className="min-w-[260px] font-grey text-[15px] 2xl:min-w-[290px]">
                     <div className="bg-[#f1f1f1]">
                         <div className="p-[1rem]">
@@ -61,14 +61,20 @@ export default function ProfilePageForDeskTop() {
                                 return (
                                     <NavLink to={route} key={title}
                                         className={({isActive}) => isActive ? "font-red" : ""}>
-                                        <div className={`p-[1rem] hover:text-[#e11b23] 
-                                            ${index < optionsInAccountSection.length - 1 ? "border-b-[2px] border-[#eee]" : ""}`}>
+                                        <div className={`p-[1rem] hover:text-[#e11b23] border-b-[2px] border-[#eee]"`}>
                                             <p>{title}</p>
                                         </div>
                                     </NavLink>    
                                 )
                             })
                         }
+
+                        <NavLink to={`${user?.name}`}
+                            className={({isActive}) => isActive ? "font-red" : ""}>
+                            <div className={`p-[1rem] hover:text-[#e11b23]`}>
+                                <p>Profile</p>
+                            </div>
+                        </NavLink> 
                     </nav>
 
                     <div className="mt-[1.5rem]">

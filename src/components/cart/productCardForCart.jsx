@@ -60,7 +60,7 @@ export default function ProductCardForCart({product}) {
         <div className="border-[2px] border-[#f2f2f2]">
             <div>
                 {/* upper section */}
-                <div className="flex text-[13px] p-[10px] sm:p-[15px]">
+                <div className="flex text-[10px] p-[5px] sm:p-[15px]">
                     <Link to={`/product/${productId}`}>
                         <div className="w-[7rem] rounded-[5px] cursor-pointer mb-[5px] sm:w-[9.5rem]">
                             <img src={displayImage} alt="No Image" className="rounded-[5px]" />
@@ -70,15 +70,16 @@ export default function ProductCardForCart({product}) {
 
                     <div className="w-full ml-[10px] sm:ml-[15px]">
                         <Link to={`/product/${productId}`}>
-                            <p className="text-[15px] font-bold font-grey cursor-pointer hover:text-[#e11b23]">{productName}</p>
+                            <p className="text-[13px] font-bold font-grey cursor-pointer hover:text-[#e11b23]
+                                min-[320px]:text-[15px]">{productName}</p>
                         </Link>
 
                         <p className="font-bold my-[5px]">₹ {price}</p>
 
-                        <div className="font-grey flex items-center py-[5px] font-bold">
+                        <div className="font-grey flex flex-col items-start py-[5px] font-bold min-[320px]:flex-row">
                             <div className="flex border border-[#f2f2f2] rounded-[5px] p-[5px]">
-                                <p>Size: </p>
-                                <select name="size" id="size" className="border-0 cursor-pointer ml-[5px]"
+                                <p>Size:</p>
+                                <select name="size" id="size" className="border-0 cursor-pointer min-[320px]:ml-[5px]"
                                     onChange={(e) => handleChange(e)}>
                                     {
                                         !isLoading && item?.size?.map(item => {
@@ -97,7 +98,7 @@ export default function ProductCardForCart({product}) {
                                 </select>
                             </div>
 
-                            <div className="flex ml-[10px] border border-[#f2f2f2] rounded-[5px] p-[5px]">
+                            <div className="flex mt-[10px] border border-[#f2f2f2] rounded-[5px] p-[5px] min-[320px]:ml-[10px] min-[320px]:mt-0">
                                 <p>Qty: </p>
                                 <select name="quantity" id="quantity" className="border-0 cursor-pointer ml-[5px]"
                                     onChange={(e) => handleChange(e)}>
@@ -122,8 +123,8 @@ export default function ProductCardForCart({product}) {
                 </div>
 
                 {/* lower section */}
-                <div className="w-full flex justify-center items-center cursor-pointer font-grey duration-300
-                    border-t-[3.5px] border-[#f2f2f2] font-bold py-[10px] mt-[-5px] hover:bg-[#e11b23] hover:text-white"
+                <div className="w-full flex justify-center items-center cursor-pointer font-grey duration-300 text-[13px]
+                    border-t-[3.5px] border-[#f2f2f2] font-bold py-[10px] mt-[-5px] hover:bg-[#e11b23] hover:text-white min-[320px]:text-[15px]"
                     onClick={() => removeFromCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId)}>
                     REMOVE
                 </div>

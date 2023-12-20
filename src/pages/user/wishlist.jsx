@@ -17,7 +17,7 @@ export default function Wishlist() {
     return (
         <div className="w-full h-full flex items-center justify-center">
             {
-                whishlistItems.length === 0 ?
+                whishlistItems?.length === 0 ?
                 // empty whishlist
                 <div className="flex flex-col items-center justify-center my-[50px] mx-[1rem]">
                     <div className="w-[190px] h-[190px] lg:w-[290px] lg:h-[290px]">

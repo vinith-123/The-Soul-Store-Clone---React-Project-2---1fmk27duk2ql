@@ -122,7 +122,7 @@ export default function OrderSectionForCart() {
                     </div>
                 </div>
 
-                <button className="w-full mt-[1rem] py-[8px] font-green text-[13px] font-bold border-y border-[#117a7a] 
+                <button className="w-full mt-[1rem] py-[8px] font-green text-[13px] font-bold border border-[#117a7a] 
                     duration-500
                     hover:bg-[#117a7a] hover:text-white md:border md:rounded-[5px]">
                     PLACE ORDER

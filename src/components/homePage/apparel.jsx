@@ -22,7 +22,8 @@ export default function Apparel({list}) {
 
     const {isMobile}= useContext(ModalContext);
     const {apparelForMen, apparelForWomen, apparelForKids}= useContext(TagContext);
-    const {isAuthenticated, setIsAuthenticated, save_user_and_token, whishlistItems, itemsInCart}= useContext(UserContext);
+    const {isAuthenticated, setIsAuthenticated, save_user_and_token, whishlistItems, itemsInCart,
+        user}= useContext(UserContext);
 
     const [isHovered, setIsHovered]= useState(false);
     // const [isHoveredOnProfile, setIsHoveredOnProfile]= useState(false);
@@ -48,7 +49,7 @@ export default function Apparel({list}) {
         {option: "TSS Money", route: "my-money"},
         {option: "TSS Points", route: "my-points"},
         {option: "Saved Cards", route: "my-saved-cards"},
-        {option: "Profile", route: "profile"},
+        {option: "Profile", route: `${user?.name}`},
         {option: "FAQs", route: "faqs"},
         {option: "Submit Design", route: "submit-art-work"},
     ]);
@@ -119,12 +120,12 @@ export default function Apparel({list}) {
                             </Link>
                         </div>
                         
-                        <div className="ml-[1rem] text-[13px] border border-[#117a7a] text-[#117a7a] 
+                        <div className="ml-[1rem] text-[11px] border border-[#117a7a] text-[#117a7a] 
                             rounded-[5px] cursor-pointer
                             hover:bg-[#117a7a] hover:text-white 
-                            sm:ml-[3rem]">
+                            sm:ml-[3rem] sm:text-[13px]">
                             <Link to={"/authentication"}>
-                                <p className="px-[1.5rem] py-[7px]">Logon/Register</p>
+                                <p className="px-[15px] py-[5px] sm:px-[1.5rem] sm:py-[7px]">Logon/Register</p>
                             </Link>
                         </div>
                     </div>
@@ -149,7 +150,7 @@ export default function Apparel({list}) {
                             flex items-center justify-center pt-[2px]`}>Kids</p>
                     </nav>
  
-                    <ul className="flex flex-col flex-wrap justify-center mx-[2rem] mt-[1.5rem] 
+                    <ul className="flex flex-col flex-wrap justify-center mt-[1.5rem] 
                         min-h-[2rem] sm:flex-row">
                         {
                             listInMenubar.map(item => {
@@ -182,7 +183,7 @@ export default function Apparel({list}) {
                         isAuthenticated &&
                         <>
                             <Link to={"/profile"}>
-                                <p className="cursor-pointer py-[10px]">My Profile</p>
+                                <p className="cursor-pointer py-[10px]">My Account</p>
                             </Link>
 
                             <Link to={"/profile/orders"}>
