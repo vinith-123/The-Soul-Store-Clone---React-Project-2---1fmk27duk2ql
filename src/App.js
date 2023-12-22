@@ -35,6 +35,8 @@ import { fetchAuthorizedData } from "./utils/utilities";
 import Wishlist from "./pages/user/wishlist";
 import ArtSection from "./components/profilePage/artSection";
 import AddressSection from "./components/profilePage/addressSection";
+import DeliveryAddress from "./components/cart/deliveryAddress";
+import Checkout from "./components/cart/checkout";
 
 function App() {
 
@@ -76,6 +78,8 @@ function App() {
     if(authToken) {
     const user= localStorage.getItem("userInfo");
     const parsedUser= JSON.parse(user);
+
+    // console.log("userInfo: ", user)
 
       save_user_and_token(parsedUser, authToken);
       setIsAuthenticated(true);
@@ -147,13 +151,16 @@ function App() {
         <Route path="address" element= {<AddressSection />} />
       </Route>
 
-      <Route path="orders" element= {<OrderSection />} />
-      <Route path="my-gift-voucher" element= {<VoucherSection />} />
-      <Route path="points" element= {<PointsSection />} />
-      <Route path="money" element= {<MoneySection />} />
-      <Route path="my-saved-cards" element= {<SaveCardSection />} />
-      <Route path=":username" element= {<EditProfileSection />} />
-      <Route path="address" element= {<AddressSection />} />
+      <Route path="/orders" element= {<OrderSection />} />
+      <Route path="/my-gift-voucher" element= {<VoucherSection />} />
+      <Route path="/points" element= {<PointsSection />} />
+      <Route path="/money" element= {<MoneySection />} />
+      <Route path="/my-saved-cards" element= {<SaveCardSection />} />
+      <Route path="/:username" element= {<EditProfileSection />} />
+      <Route path="/address" element= {<AddressSection />} />
+
+      <Route path="/delivery-address/:true" element= {<DeliveryAddress />} />
+      <Route path="/checkout" element= {<Checkout />} />
 
       <Route path="/authentication" element= {<AuthenticationPage />} >
         <Route path="register" element= {<SignUp />} />

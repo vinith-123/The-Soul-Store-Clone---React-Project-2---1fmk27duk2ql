@@ -32,6 +32,7 @@ export default function Apparel({list}) {
     const [isClickedOnMenu, setIsClickedOnMenu]= useState(false);
     const [isDropDownActive, setIsDropDownActive]= useState(false);
 
+
     const [activeRoute, setActiveRoute]= useState(
         {
             men: true,
@@ -119,15 +120,24 @@ export default function Apparel({list}) {
                                 <Logo width={"16px"} height={"16px"} color={"#f65757"} />
                             </Link>
                         </div>
-                        
-                        <div className="ml-[1rem] text-[11px] border border-[#117a7a] text-[#117a7a] 
-                            rounded-[5px] cursor-pointer
-                            hover:bg-[#117a7a] hover:text-white 
-                            sm:ml-[3rem] sm:text-[13px]">
-                            <Link to={"/authentication"}>
-                                <p className="px-[15px] py-[5px] sm:px-[1.5rem] sm:py-[7px]">Logon/Register</p>
-                            </Link>
-                        </div>
+
+                        {
+                            isAuthenticated ?
+                                <div className="font-medium text-[17px] ml-[1rem]">
+                                    {
+                                        user?.name.toUpperCase()
+                                    }
+                                </div>
+                            :
+                                <div className="ml-[1rem] text-[11px] border border-[#117a7a] text-[#117a7a] 
+                                    rounded-[5px] cursor-pointer
+                                    hover:bg-[#117a7a] hover:text-white 
+                                    sm:ml-[3rem] sm:text-[13px]">
+                                    <Link to={"/authentication"}>
+                                        <p className="px-[15px] py-[5px] sm:px-[1.5rem] sm:py-[7px]">Logon/Register</p>
+                                    </Link>
+                                </div>
+                        }
                     </div>
 
                     <div onClick={() => setIsClickedOnMenu(false)} 

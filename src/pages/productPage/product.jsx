@@ -202,10 +202,11 @@ export default function Product() {
                         
                         {
                             isInCart ?  
-                            <Link to={"/cart"}>
-                                <p className={`flex items-center justify-center py-[5px] px-[1.5rem] rounded-[3px] flex-grow flex-shrink
+                            <Link to={"/cart"} className="max-md:w-full">
+                                <p className={`flex items-center justify-center py-[5px] px-[2rem] rounded-[3px] flex-grow flex-shrink
                                     border border-[#117a7a] rounded-[4px] cursor-pointer mt-[1rem] duration-500
-                                    bc-green text-white hover:bg-white hover:text-[#117a7a] max-md:w-full`}>GO TO CART</p>
+                                    bc-green text-white hover:bg-white hover:text-[#117a7a] max-md:w-full
+                                    lg:px-[3rem] xl:px-[4rem]`}>GO TO CART</p>
                             </Link>
                             :
                             <p className={`flex items-center justify-center py-[5px] rounded-[3px] flex-grow flex-shrink

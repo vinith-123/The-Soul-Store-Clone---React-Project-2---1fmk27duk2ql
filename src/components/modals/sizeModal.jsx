@@ -46,7 +46,7 @@ export default function SizeModal({item, isOpen, onClose}) {
 
     return (
 
-        <Portal>
+        <Portal effect={"backdrop-grayscale backdrop-blur-[4px] backdrop-brightness-50 animate-vertical-slide"}>
             <div className="relative px-[1rem] pt-[1.5rem] pb-[1rem] flex font-grey border-b border-[#999]">
                 <div className="w-[2.5rem] h-[2.5rem] bg-[#ffebe7]"> 
                     <img src={displayImage} alt="No Image" />

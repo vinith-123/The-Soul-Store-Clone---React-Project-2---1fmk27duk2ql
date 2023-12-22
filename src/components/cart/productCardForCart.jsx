@@ -60,7 +60,7 @@ export default function ProductCardForCart({product}) {
         <div className="border-[2px] border-[#f2f2f2]">
             <div>
                 {/* upper section */}
-                <div className="flex text-[10px] p-[5px] sm:p-[15px]">
+                <div className="flex text-[10px] px-[5px] py-[10px] sm:p-[15px]">
                     <Link to={`/product/${productId}`}>
                         <div className="w-[7rem] rounded-[5px] cursor-pointer mb-[5px] sm:w-[9.5rem]">
                             <img src={displayImage} alt="No Image" className="rounded-[5px]" />
@@ -74,9 +74,9 @@ export default function ProductCardForCart({product}) {
                                 min-[320px]:text-[15px]">{productName}</p>
                         </Link>
 
-                        <p className="font-bold my-[5px]">₹ {price}</p>
+                        <p className="font-bold my-[5px] text-[14px]">₹ {price}</p>
 
-                        <div className="font-grey flex flex-col items-start py-[5px] font-bold min-[320px]:flex-row">
+                        <div className="font-grey text-[14px] flex flex-col items-start py-[5px] font-bold min-[320px]:flex-row">
                             <div className="flex border border-[#f2f2f2] rounded-[5px] p-[5px]">
                                 <p>Size:</p>
                                 <select name="size" id="size" className="border-0 cursor-pointer min-[320px]:ml-[5px]"

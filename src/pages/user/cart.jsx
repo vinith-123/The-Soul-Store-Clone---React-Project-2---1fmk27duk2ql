@@ -2,9 +2,10 @@ import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../context/userContext"
 import { Link } from "react-router-dom";
 import ProductCardForCart from "../../components/cart/productCardForCart";
-import OrderSectionForCart from "../../components/cart/orderSectionForCart";
+import OrderSectionForCart from "../../components/cart/orderSectionForCart/orderSectionForCart";
 import Empty_heart from "../../assets/svg/emptyHeart";
 import ChevronRight from "../../assets/svg/chevronRight";
+import { myRandom } from "../../utils/utilities";
 
 
 
@@ -12,7 +13,9 @@ import ChevronRight from "../../assets/svg/chevronRight";
 
 
 export default function Cart() {
-    const {itemsInCart, setTotalPrice, isAuthenticated}= useContext(UserContext);
+    const {itemsInCart, setTotalPrice, isAuthenticated, user}= useContext(UserContext);
+
+    const [estimatedTime, setEstimatedTime]= useState(myRandom(9));
 
     // const price= itemsInCart?.reduce((accumulator, item) => {
     //     return accumulator + item?.price;
@@ -30,7 +33,7 @@ export default function Cart() {
 
     return(
         <div className="flex flex-col items-center justify-center">
-            <nav className="flex justify-center w-full font-bold text-[10px] 
+            <div className="flex justify-center w-full font-bold text-[10px] 
                 border-b border-[#eee] px-[5px] py-[1rem] 
                 md:text-[14px] lg:px-[1rem]">
                 <div className="font-green pointer-events-none">
@@ -39,18 +42,18 @@ export default function Cart() {
 
                 <div className="flex items-center">
                     <p className="px-[5px]">- - - - - - - - - -</p>
-                    <div className="font-green pointer-events-none">
+                    <div className="pointer-events-none">
                         <p className="px-[5px]">ADDRESS</p>
                     </div>
                 </div>
                 
                 <div className="flex items-center">
                     <p className="px-[5px]">- - - - - - - - - -</p>
-                    <div className="font-green pointer-events-none">
+                    <div className="pointer-events-none">
                         <p className="px-[5px]">PAYMENT</p>
                     </div>
                 </div>
-            </nav>
+            </div>
             {
                 itemsInCart.length === 0 ? 
                 <div className="flex flex-col items-center justify-center my-[50px] mx-[1rem]">
@@ -89,7 +92,22 @@ export default function Cart() {
                 :
 
                 <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
-                    <div className=" px-[5px] my-[1rem] flex flex-col md:flex-row">
+                    <div className="px-[5px] my-[1rem] flex flex-col md:flex-row">
+                        {/* address section */}
+
+                        {/* {
+                            (user?.address && user?.address.length > 0) &&
+                            <div>
+                                <p>Deliver To: {user?.name.toUpperCase()}, {user?.address[0]?.zipCode}</p>
+
+                                <div>
+                                    <p>{user?.address[0]?.street}, {user?.address[0]?.city}, {user?.address[0]?.state}, 
+                                        {user?.address[0]?.country} </p>
+                                    <p>Estimated delivery by {}</p>
+                                </div>
+                            </div>
+                        } */}
+
                         {/* cart items */}
                         <div className="mb-[1rem] w-full lg:w-[500px] xl:w-[700px]">
                             {

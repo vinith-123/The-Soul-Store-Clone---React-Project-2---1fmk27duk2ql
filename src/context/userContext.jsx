@@ -19,20 +19,26 @@ function UserProvider({children}) {
     const [token, set_token]= useState(null);
 
     const [username, setUserName]= useState(user?.name);
-    const [firstLetterOfUser, setFirstLetterOfUser]= useState(username?.[0]);
+    // const [firstLetterOfUser, setFirstLetterOfUser]= useState(username?.[0]);
+    
 
     function save_user_and_token(user, token) {
         set_user(user);
         set_token(token);
     }
 
+    function saveUser(user) {
+        set_user(user);
+    }
+
     // console.log("total price in global: ", totalPrice);
 
-    // console.log(user)
+    // console.log("user: ",user)
+
     return(
         <UserContext.Provider value={{isAuthenticated, setIsAuthenticated, itemsInCart, setItemsInCart,
             whishlistItems, setWhishlistItems, projectId, username, setUserName, 
-            firstLetterOfUser, setFirstLetterOfUser, save_user_and_token, 
+            save_user_and_token, saveUser, 
             user, set_user, token, set_token, totalPrice, setTotalPrice}}>
             {children}
         </UserContext.Provider>

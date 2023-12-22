@@ -16,6 +16,11 @@ export function closeTheModal(e, setModal) {
 }
 
 
+export function myRandom(num) {
+    return Math.floor(Math.random() * (num - 1) + 1);
+}
+
+
 
 export async function fetch_data(url, projectId) {
         
@@ -59,7 +64,7 @@ export function findProduct(list, productId) {
 }
 
 
-
+// wishlist
 
 export async function manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId) {
     const isPresent= whishlistItems.some(item => item.productId === product.productId);
@@ -126,7 +131,7 @@ export async function manageWhishlist(whishlistItems, setWhishlistItems, product
     }
 }
 
-
+// add to cart
 
 export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, quantity, size) {
 
@@ -176,7 +181,7 @@ export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPr
     }    
 }
 
-
+// remove from cart
 
 export async function removeFromCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId) {
 
@@ -210,3 +215,52 @@ export async function removeFromCart(itemsInCart, setItemsInCart, product, setTo
     
 }
 
+
+// update user data
+
+export async function updateUserInfo(url, userInfo, user, saveUser, token, projectId, onClose) {
+    try {   
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("projectID", `${projectId}`);
+
+        var raw = JSON.stringify({
+        "name": userInfo ? userInfo.firstName + " " + userInfo.lastName : user.name,
+        "address": {
+            "street": userInfo ? userInfo.street : user.address["street"],
+            "city": userInfo ? userInfo.city  : user.address["city"],
+            "state": userInfo ? userInfo.state  : user.address["state"],
+            "country": userInfo ? userInfo.country  : user.address["country"],
+            "zipCode": userInfo ? userInfo.zipCode  : user.address["zipCode"]
+        },
+        "phone": userInfo ? userInfo.phone  : user.phone
+        });
+
+        var requestOptions = {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        const response= await fetch(url, requestOptions);
+
+        if(response.ok) {
+            const data= await response.json();
+
+            const {data: userData}= data;
+
+            // console.log(userData)
+
+            const userDataString = JSON.stringify(userData.user);
+            localStorage.setItem("userInfo", userDataString);
+
+            saveUser(userData);
+            onClose && onClose();
+        }
+        
+    } catch(error) {
+        console.log("error: ", error);
+    }
+}
