@@ -15,7 +15,7 @@ export default function SignUp() {
 
     const [errorState, set_error_state]= useState("");
 
-    const [isPasswordCorrect, setIsPasswordCorrect]= useState(null);
+    const [isPasswordCorrect, setIsPasswordCorrect]= useState(undefined);
     const [reEnterPass, setReEnterPass]= useState(null);
      
 
