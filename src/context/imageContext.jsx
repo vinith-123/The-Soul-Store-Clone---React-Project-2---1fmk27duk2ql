@@ -83,7 +83,7 @@ function ImageProvider({children}) {
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_2_03YHRD0.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "men-tshirt",
+                    route: "men-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/tile-big-web_1_TojfZVA.jpg?format=webp&w=480&dpr=2.0",
                 },
                 {
@@ -126,31 +126,31 @@ function ImageProvider({children}) {
 
             women: [
                 {
-                    route: "women-tops",
+                    route: "women-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/big-tile-women-tops-.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "tshirts",
+                    route: "women-tshirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/big-tile-women-OS-tee-.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "co-ord-sets",
-                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/women-Website-tile-big-one_2_PIshbAp.jpg?format=webp&w=480&dpr=1.3",
+                    route: "women-jeans",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/jeans_web_tile_small_OIH1lo1.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "women-hoodies-and-sweatshirts",
+                    route: "women-shirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-hoodies.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {
-                    route: "women-knitted-sweaters",
-                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-Sweater.jpg?format=webp&w=360&dpr=1.3",
+                    route: "women-jumpsuits",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/dresses_Dl8piqy.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "women-jackets",
-                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/small-tile-jkt.jpg?format=webp&w=360&dpr=1.3",
+                    route: "women-joggers",
+                    url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/for-ra_RZF3puQ.jpg?format=webp&w=480&dpr=1.3",
                 },
                 {
-                    route: "womens-shirts",
+                    route: "women-shirts",
                     url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/shirts_web_tile_Bfl4PFh.jpg?format=webp&w=360&dpr=1.3",
                 },
                 {

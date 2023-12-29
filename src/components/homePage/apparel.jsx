@@ -50,7 +50,7 @@ export default function Apparel({list}) {
         {option: "TSS Money", route: "my-money"},
         {option: "TSS Points", route: "my-points"},
         {option: "Saved Cards", route: "my-saved-cards"},
-        {option: "Profile", route: `${user?.name}`},
+        {option: "Profile", route: `/myprofile/${user?.name}`},
         {option: "FAQs", route: "faqs"},
         {option: "Submit Design", route: "submit-art-work"},
     ]);

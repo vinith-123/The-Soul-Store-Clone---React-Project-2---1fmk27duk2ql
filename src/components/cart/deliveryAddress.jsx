@@ -47,7 +47,7 @@ export default function DeliveryAddress() {
                     <div className="w-full mt-[1rem] md:w-[23rem] md:ml-[2rem] md:mt-[1px]">
                         <OrederBill isChecked= {isChecked.true === "true"} />
 
-                        <Link to={"/checkout"}>
+                        <Link to={"/checkout/" + `${isChecked.true === "true"}`}>
                             <button className="w-full mt-[1rem] py-[8px] font-green text-[13px] font-bold border border-[#117a7a] 
                                 duration-500
                                 hover:bg-[#117a7a] hover:text-white md:border md:rounded-[5px]">
@@ -56,7 +56,6 @@ export default function DeliveryAddress() {
                         </Link>
                     </div>
                 </div>
-                
             </div>
         </div>
         

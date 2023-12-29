@@ -34,7 +34,7 @@ export default function ProfilePageForMobile() {
             </div>
 
             <nav className="font-bold">
-                <NavLink to={`/${user?.name}`} 
+                <NavLink to={`/myprofile/${user?.name}`} 
                     className={({isActive}) => isActive ? "font-red" : ""}>
                     <div className={`p-[1rem] border-b-[2px] border-[#eee] hover:text-[#e11b23]`}>
                         <p>Profile</p>

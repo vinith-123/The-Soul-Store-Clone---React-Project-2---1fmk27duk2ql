@@ -23,7 +23,7 @@ export function myRandom(num) {
 
 
 export async function fetch_data(url, projectId) {
-        
+        // console.log(url)
     try {
         const data= await axios.get(url, {headers:{"projectId":projectId}});
        

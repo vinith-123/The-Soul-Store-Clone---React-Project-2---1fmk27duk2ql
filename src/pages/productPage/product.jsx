@@ -42,6 +42,7 @@ export default function Product() {
     })
 
     // console.log("cart: ", cart);
+    // console.log(product);
 
     function handleChangeForCart(event) {
         const target= event.target;
@@ -269,16 +270,19 @@ export default function Product() {
                     </div>
                 </div>     
             </div>
-            
+            {/* {
+                console.log(product.gender)
+            }
+             */}
             {/* similar products */}
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-between pt-[1rem] md:pt-[3rem]">
-                <ProductList url={productUrl.filterProduct + `{"subCategory":"${product.subCategory}", "gender":"Men"}&page=1&limit=20`} 
+                <ProductList url={productUrl.filterProduct + `{"subCategory":"shirt","gender":"${product.gender}"}&page=1&limit=20`} 
                     heading={"SIMILAR PRODUCTS"} />
             </div>
 
             {/* trending products */}
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-between pt-[1rem] md:pt-[3rem]">
-                <ProductList url={productUrl.filterProduct + `{"sellerTag":"top rated", "gender":"Men"}&page=1&limit=20`} 
+                <ProductList url={productUrl.filterProduct + `{"sellerTag":"top rated","gender":"${product.gender}"}&page=1&limit=20`} 
                     heading={"TOP RATED PRODUCTS"} />
             </div>
 

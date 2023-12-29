@@ -37,6 +37,12 @@ import ArtSection from "./components/profilePage/artSection";
 import AddressSection from "./components/profilePage/addressSection";
 import DeliveryAddress from "./components/cart/deliveryAddress";
 import Checkout from "./components/cart/checkout";
+import TshirtsForWomen from "./components/clothCategoryForWomen/tshirtsForWomen";
+import ShirtsForWomen from "./components/clothCategoryForWomen/shirtsForWomen";
+import JeansForWomen from "./components/clothCategoryForWomen/jeansForWomen";
+import JumpsuitForWomen from "./components/clothCategoryForWomen/jumpsuitsForWomen";
+import JoggersForWomen from "./components/clothCategoryForWomen/joggersForWomen";
+import PantsForWomen from "./components/clothCategoryForWomen/pantsForWomen";
 
 function App() {
 
@@ -124,7 +130,7 @@ function App() {
       <Route path="/" element={<PageForMen />} />
       <Route path="/men" element={<PageForMen />} />
       <Route path="/women" element={<PageForWomen />} />
-      <Route path="/kids" element={<PageForKids />} />
+      {/* <Route path="/kids" element={<PageForKids />} /> */}
       <Route path="/wishlist" element= {<Wishlist />} />
       <Route path="/cart" element= {<Cart />} />
       <Route path="/membership" element= {<MembershipPage />} />
@@ -135,6 +141,14 @@ function App() {
       <Route path="/men-track-pants" element= {<TrackPantsForMen />} />
       <Route path="/men-shorts" element= {<ShortsForMen />} />
       <Route path="/men-joggers" element= {<JoggersForMen />} />
+
+      <Route path="/women-tshirts" element={<TshirtsForWomen />} />
+      <Route path="/women-shirts" element={<ShirtsForWomen />} />
+      <Route path="/women-jeans" element={<JeansForWomen />} />
+      <Route path="/women-jumpsuits" element={<JumpsuitForWomen />} />
+      <Route path="/women-joggers" element={<JoggersForWomen />} />
+      <Route path="/women-pants" element={<PantsForWomen />} />
+
 
       <Route path="/product/:productId" element= {<Product />} />
       
@@ -156,11 +170,11 @@ function App() {
       <Route path="/points" element= {<PointsSection />} />
       <Route path="/money" element= {<MoneySection />} />
       <Route path="/my-saved-cards" element= {<SaveCardSection />} />
-      <Route path="/:username" element= {<EditProfileSection />} />
+      <Route path="/myprofile/:username" element= {<EditProfileSection />} />
       <Route path="/address" element= {<AddressSection />} />
 
       <Route path="/delivery-address/:true" element= {<DeliveryAddress />} />
-      <Route path="/checkout" element= {<Checkout />} />
+      <Route path="/checkout/:true" element= {<Checkout />} />
 
       <Route path="/authentication" element= {<AuthenticationPage />} >
         <Route path="register" element= {<SignUp />} />

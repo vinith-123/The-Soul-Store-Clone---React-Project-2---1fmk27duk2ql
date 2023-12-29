@@ -30,7 +30,7 @@ export default function ProductCardForWishlist({product}) {
         manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId);
     }
     
-    // console.log("product: ", productDetails)
+    console.log("product: ", productDetails)
     return (
         <li key= {productId} className="relative m-[5px] cursor-pointer border border-[#999] rounded-[3px] sm:m-[10px] md:m-[1rem]">
             <Link to={`/product/${productId}`}>
@@ -56,7 +56,7 @@ export default function ProductCardForWishlist({product}) {
                     md:text-[14px] lg:text-[15px] 2xl:text-[18px]">
                     <p className="font-bold font-grey text-ellipsis overflow-hidden">
                         {
-                            productName.length > 20 ? productName.slice(0,18) + "..." : productName
+                            productDetails?.productName?.length > 20 ? productDetails?.productName.slice(0,18) + "..." : productDetails?.productName
                         }
                     </p>
                     <p>

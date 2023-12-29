@@ -16,7 +16,7 @@ export default function Navbar() {
     const navLinks= [
         {link: "WOMEN", route: "/women"},
         {link: "MEN", route: "/men"},
-        {link: "KIDS", route: "/kids"}
+        // {link: "KIDS", route: "/kids"}
     ];
 
     return (
@@ -43,9 +43,9 @@ export default function Navbar() {
 
                                 return (
                                     <NavLink key={link} to={route} className={({ isActive }) =>
-                                        isActive ? "bg-white font-grey w-1/3 lg:w-min"
+                                        isActive ? "bg-white font-grey w-1/2 lg:w-min"
                                          : 
-                                        "w-1/3 bc-red text-white border-x-[0.5px] border-black hover:bg-[#df7c7c] lg:w-min"}>
+                                        "w-1/2 bc-red text-white border-x-[0.5px] border-black hover:bg-[#df7c7c] lg:w-min"}>
                                             <div className="flex items-center justify-center w-full px-[25px] py-[12px]">
                                                 {link}
                                             </div>

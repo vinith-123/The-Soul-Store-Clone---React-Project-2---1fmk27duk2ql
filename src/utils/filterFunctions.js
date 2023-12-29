@@ -72,6 +72,7 @@ export function filterwishlistData(list) {
     seller-tag: trending, best seller, new arrival, top rated 
 
     seller: bewakoof
+    women: t-shirt, shirt, jeans, jogger, jumpsuit, kurti
 
     brand: Bewakoof®, TISTABENE, 7 Shores, Campus Sutra, Style Quotient, breakbounce, 
             chkokko, XYXX, Rigo, Alstyle, Brown Mocha, Hubberholme, CHIMPAAANZEE, 

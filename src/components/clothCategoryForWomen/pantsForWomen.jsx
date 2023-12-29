@@ -1,22 +1,20 @@
 import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
-import RenderProductsInCategory from "./productsInCategoryForMen";
+import RenderProductsInCategory from "../clothCategoryForMen/productsInCategoryForMen";
 
 
 
 
 
-
-export default function ShirtsForMen() {
-
+export default function PantsForWomen() {
     const {productUrl}= useContext(ModalContext);
 
     return (
         <RenderProductsInCategory 
-            subCategory= {["shirt"]} 
-            heading={"Men Shirts"} 
+            subCategory= {["jeans"]} 
+            heading={"Womens' Jeans'"} 
             url={productUrl.filterProduct}
-            gender={"Men"}/>
+            gender={"Women"}/>
 
     )
 }

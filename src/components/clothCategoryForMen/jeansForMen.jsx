@@ -1,4 +1,7 @@
-import ProductsInCategoryForMen from "./productsInCategoryForMen";
+import { useContext } from "react";
+import { ModalContext } from "../../context/modalContext";
+import RenderProductsInCategory from "./productsInCategoryForMen";
+
 
 
 
@@ -8,8 +11,14 @@ import ProductsInCategoryForMen from "./productsInCategoryForMen";
 
 export default function JeansForMen() {
 
+    const {productUrl}= useContext(ModalContext);
+
     return (
-        <ProductsInCategoryForMen heading={"Men Jeans"} />
+        <RenderProductsInCategory 
+            subCategory= {["jeans"]} 
+            heading={"Men's Jeans"} 
+            url={productUrl.filterProduct}
+            gender={"Men"}/>
 
     )
 }

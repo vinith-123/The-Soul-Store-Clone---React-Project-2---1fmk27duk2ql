@@ -29,6 +29,10 @@ export default function AddAddressModal({ isOpen, onClose, heading }) {
         phone: "",
     });
 
+    const nameArr= user?.name?.split(" ");
+    const [name, setName]= useState(nameArr?.[0]);
+    const [surname, setSurname]= useState(nameArr?.[1]);
+
     const [error, setError]= useState("");
 
     if (!isOpen) return null;
@@ -89,52 +93,68 @@ export default function AddAddressModal({ isOpen, onClose, heading }) {
                         {/* name section */}
                         <div className="w-full flex gap-[10px] flex-col items-start sm:flex-row md:justify-start">
                             <div className="w-full mt-[10px]">
-                                <input type="text" name="firstName" placeholder="First Name*" required
+                                <input type="text" name="firstName" required
+                                placeholder={(user?.name && userInfo.firstName !== "") ? "" : "First Name*"}
+                                defaultValue={user?.name ? name : ""}
                                 className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
                                 onChange={(e) => handleChange(e)} />
                             </div>
                             <div className="w-full mt-[10px]">
-                                <input type="text" name="lastName" placeholder="Last Name*" required
-                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                                onChange={(e) => handleChange(e)} />
+                                <input type="text" name="lastName" required
+                                    placeholder={(user?.name && userInfo.lastName !== "") ? "" : "Last Name*"}
+                                    defaultValue={user?.name ? surname : ""}
+                                    className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                    onChange={(e) => handleChange(e)} />
                             </div>
                         </div>
 
                         {/* address section */}
                         <div className="mt-[10px]">
-                            <input type="text" name="street" placeholder="Street Name*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="text" name="street" required
+                                placeholder={(user?.address?.[0]?.street && userInfo.street !== "") ? "" : "Street Name*"}
+                                defaultValue={user?.address?.[0]?.street ? user?.address?.[0]?.street : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         <div className="mt-[10px]">
-                            <input type="text" name="city" placeholder="City*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="text" name="city" required
+                                placeholder={(user?.address?.[0]?.city && userInfo.city !== "") ? "" : "City*"}
+                                defaultValue={user?.address?.[0]?.city ? user?.address?.[0]?.city : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         <div className="mt-[10px]">
-                            <input type="text" name="state" placeholder="State*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="text" name="state" required
+                                placeholder={(user?.address?.[0]?.state && userInfo.state !== "") ? "" : "State*"}
+                                defaultValue={user?.address?.[0]?.state ? user?.address?.[0]?.state : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         <div className="mt-[10px]">
-                            <input type="text" name="country" placeholder="Country*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="text" name="country" required
+                                placeholder={(user?.address?.[0]?.country && userInfo.country !== "") ? "" : "Country*"}
+                                defaultValue={user?.address?.[0]?.country ? user?.address?.[0]?.country : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         <div className="mt-[10px]">
-                            <input type="number" name="zipCode" placeholder="Postal Code*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="number" name="zipCode" required
+                                placeholder={(user?.address?.[0]?.zipCode && userInfo.zipCode !== "") ? "" : "Postal Code*"}
+                                defaultValue={user?.address?.[0]?.zipCode ? user?.address?.[0]?.zipCode : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         <div className="mt-[10px]">
-                            <input type="tel" name="phone" placeholder="Mobile Number*" required
-                            className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
-                            onChange={(e) => handleChange(e)} />
+                            <input type="tel" name="phone" required
+                                placeholder={(user?.phone && userInfo.phone !== "") ? "" : "Mobile Number*"}
+                                defaultValue={user?.phone ? user?.phone : ""}
+                                className={`w-full border rounded-[5px] px-[10px] py-[5px]`}
+                                onChange={(e) => handleChange(e)} />
                         </div>
 
                         {
