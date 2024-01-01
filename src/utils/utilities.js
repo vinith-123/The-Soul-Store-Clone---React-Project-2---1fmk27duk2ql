@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import { filterCartData } from "./filterFunctions";
 
 
 
@@ -136,6 +137,11 @@ export async function manageWhishlist(whishlistItems, setWhishlistItems, product
 export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, quantity, size) {
 
     const baseUrl= "https://academics.newtonschool.co/api/v1/ecommerce/cart/"
+    console.log("quantity: ", quantity);
+    console.log("size: ", size);
+
+    // console.log(baseUrl + product.productId);
+
 
     try{
         var myHeaders = new Headers();
@@ -145,7 +151,7 @@ export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPr
 
         var raw = JSON.stringify({
             "quantity" : quantity,
-            "size": `${size}`
+            "size": size,
         });
 
         var requestOptions = {
@@ -155,31 +161,36 @@ export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPr
         redirect: 'follow'
         };
 
-        const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
+        console.log
+
+        const response= await fetch(baseUrl + `${product?.productId}`, requestOptions);
         const data= await response.json();
 
+        const modifiedData= data.data;
         // console.log("added: ", data.data);
+        // console.log(product) 
         // console.log("response: ", response)
         // console.log("product id: ", product.productId);
 
         if(response.ok) {
-            const newList= [...itemsInCart, {
-                productId: product.productId,
-                displayImage: product.displayImage,
-                productName: product.name,
-                price: product.price,
-                ratings: product.ratings,
-                size: size,
-                quantity: quantity,
-            }];
+
+            const newList= filterCartData(modifiedData);
+
             setItemsInCart(newList);
 
             setTotalPrice(data?.data?.totalPrice);
+
+            console.log("added: ", newList);
+
+        } else {
+            console.log("error for add operation: ", error);
         }
     } catch(error) {
-        console.log("error in deleting item from cart: ", error);
+        console.log("error in adding item in database: ", error);
     }    
 }
+
+
 
 // remove from cart
 
@@ -201,16 +212,22 @@ export async function removeFromCart(itemsInCart, setItemsInCart, product, setTo
         const response= await fetch(baseUrl + `${product.productId}`, requestOptions);
         const data= await response.json();
 
+        const modifiedData= data.data;
+
         // console.log("removed: ", data.data);
 
         if(response.ok) {
-            const newList= itemsInCart.filter(item => item.productId !== product.productId);
+            const newList= filterCartData(modifiedData);
 
             setItemsInCart(newList);
             setTotalPrice(data?.data?.totalPrice);
+
+            console.log("removed: ", newList);
+        } else {
+            console.log("error for remove operation: ", response);
         }
     } catch(error) {
-        console.log("error in deleting item from cart: ", error);
+        console.log("error in deleting item from database: ", error);
     }
     
 }
@@ -251,7 +268,7 @@ export async function updateUserInfo(url, userInfo, user, saveUser, token, proje
 
             const {data: userData}= data;
 
-            // console.log(userData)
+            // console.log("")
 
             const userDataString = JSON.stringify(userData.user);
             localStorage.setItem("userInfo", userDataString);

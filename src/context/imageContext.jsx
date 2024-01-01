@@ -10,12 +10,10 @@ function ImageProvider({children}) {
     const [bigCorousalForMen, setBigCorousalForMen]= useState(
         {
             largeSize: [
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Cardsjoyful-homepage-banner_1.jpg?format=webp&w=1500&dpr=1.3",
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner-male.jpg?format=webp&w=1024&dpr=2.0",
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner_BB.jpg?format=webp&w=1024&dpr=2.0",
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner_Cities.jpg?format=webp&w=1440&dpr=2.0",
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Banner_Homepage-Sweatshirts.jpg?format=webp&w=1440&dpr=2.0",
-                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner_Hardik-Oversized_NEW-Final.jpg?format=webp&w=1440&dpr=2.0",
+                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/web-banner_EBmMiUE.jpg?format=webp&w=1500&dpr=1.3",
+                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/Homepage-Banner_4_d7xPU5a.jpg?format=webp&w=1500&dpr=1.3",
+                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/web_2.jpg?format=webp&w=1500&dpr=1.3",
+                "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/banner-images/web_copy_1.jpg?format=webp&w=1500&dpr=1.3",
             ],
 
             smallSize: [

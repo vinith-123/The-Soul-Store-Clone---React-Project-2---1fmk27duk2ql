@@ -15,12 +15,15 @@ export default function ProductList({url, heading}) {
 
     const [productList, error]= useFetchList(url, mapDataForHomePage);
 
-    const arr= [];
-    arr.fill("", 0, 19);
+    const arr= new Array(20).fill("");
     // console.log(productList.length);
 
+    // console.log(arr)
+
+    // console.log("url: ", url)
+
     return (
-        <div className="w-full p-[1rem]">
+        <div className="w-full p-[10px] min-[425px]:p-[1rem]">
             <div className="text-[18px] py-[10px] font-bold w-full flex md:justify-center md:text-[28px]">
                 {heading}
             </div>
@@ -53,7 +56,7 @@ export default function ProductList({url, heading}) {
                                                     {
                                                         isMobile ? (productName.length > 15 ? productName.slice(0,15) + "..." : productName)
                                                         :
-                                                        productName
+                                                        productName.slice(0, 25) + "..."
                                                     }
                                                 </p>
                                                 <p>
@@ -71,12 +74,28 @@ export default function ProductList({url, heading}) {
                             arr.map((_, index) => {
                                 // console.log("skeleton: ", index)
                                 return (
-                                    <div key={index} className="relative flex items-center justify-center bg-[#f2f2f2] w-[150px] h-[190px]
-                                    bg-[#3d3c3c] overflow-hidden
-                                    sm:w-[180px] sm:h-[220px]
-                                    md:w-[230px] md:h-[290px]
-                                    lg:w-[340px] lg:h-[420px]" >
-                                    </div>
+                                    <li key= {index} className="p-[10px] w-full cursor-pointer animate-pulse">
+                                        
+                                            <div className="bg-gray-200 bg-gray-400 relative flex items-center justify-center bg-[#f2f2f2] 
+                                                w-[150px] h-[190px] bg-[#3d3c3c] overflow-hidden
+                                                sm:w-[180px] sm:h-[220px]
+                                                md:w-[230px] md:h-[290px]
+                                                lg:w-[340px] lg:h-[420px]" >
+                                            </div>
+
+                                            <div className="w-full mt-[10px]">
+                                                <p className="bg-gray-200 bg-gray-400 w-full h-[1rem] "></p>
+                                                <p className="bg-gray-200 bg-gray-400 mt-[10px] w-[100px] h-[1rem]
+                                                sm:w-[150px]
+                                                md:w-[200px]
+                                                lg:w-[300px]"></p>
+
+                                                <p className="bg-gray-200 bg-gray-400 mt-[10px] w-[80px] h-[1rem] 
+                                                sm:w-[120px]
+                                                md:w-[180px]
+                                                lg:w-[280px]"></p>
+                                            </div>
+                                    </li>
                                 )
                             })
                     }

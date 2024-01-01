@@ -9,7 +9,7 @@ export default function Categories({list}) {
     // console.log("list: ", list);
 
     return (
-        <div className="flex flex-col items-center p-[1rem]">
+        <div className="flex flex-col items-center min-[320px]:p-[1rem]">
             <p className="text-[28px] font-bold py-[1rem]">CATEGORIES</p>
 
             <ul className="flex flex-wrap justify-center w-full">

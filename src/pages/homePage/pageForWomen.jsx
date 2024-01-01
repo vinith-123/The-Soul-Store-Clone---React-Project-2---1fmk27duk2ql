@@ -6,6 +6,7 @@ import { TagContext } from "../../context/tagContext";
 import { ImageContext } from "../../context/imageContext";
 import { ModalContext } from "../../context/modalContext";
 import ProductList from "../../components/homePage/productList";
+import Carousel from "../../components/carousel/carousel";
 
 
 
@@ -13,9 +14,8 @@ import ProductList from "../../components/homePage/productList";
 
 export default function PageForWomen() {
     const {apparelForWomen}= useContext(TagContext);
-    const {productUrl}= useContext(ModalContext);
-    const {bigCorousalForMen, categories, merchandise}= useContext(ImageContext);
-    // console.log("men: ", merchandise);
+    const {productUrl, isMobile}= useContext(ModalContext);
+    const {bigCorousalForWomen, categories, merchandise}= useContext(ImageContext);
     const trendingUrl= productUrl.filterProduct + `{"sellerTag":"trending", "gender":"Women"}&page=1&limit=20`;
     const bestSellerUrl= productUrl.filterProduct + `{"sellerTag":"best seller", "gender":"Women"}&page=1&limit=20`;
     const newArrivalUrl= productUrl.filterProduct + `{"sellerTag":"new arrival", "gender":"Women"}&page=1&limit=20`;
@@ -38,6 +38,10 @@ export default function PageForWomen() {
             </div> */}
 
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
+
+                <Carousel 
+                    list={isMobile ? bigCorousalForWomen.smallSize : bigCorousalForWomen.largeSize} 
+                    effect={"h-[14rem] min-[425px]:h-[20rem] sm:h-[30rem] lg:h-[350px] xl:h-[490px] 2xl:h-[510px]"}/>
                 <ProductList url= {trendingUrl} heading= {"TRENDING"} />
                 <ProductList url= {newArrivalUrl} heading= {"NEW ARRIVAL"} />
                 <ProductList url= {topRatedUrl} heading= {"TOP RATED"} />

@@ -44,7 +44,8 @@ export default function VoucherDropDown({heading}) {
                             className="border border-[#f2f2f2] text-[12px] px-[8px] py-[3px] rounded-[5px] w-full" />
                     </div>
 
-                    <button className="font-bold text-[12px] border border-[#117a7a] rounded-[5px]  px-[8px] py-[3px] ml-[10px]
+                    <button className="font-bold text-[12px] border border-[#117a7a] rounded-[5px] 
+                        font-green px-[8px] py-[3px] ml-[10px]
                         hover:bg-[#117a7a] hover:text-white">
                         APPLY
                     </button>

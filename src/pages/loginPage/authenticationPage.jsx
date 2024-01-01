@@ -18,7 +18,7 @@ export default function AuthenticationPage() {
     return (
         <div className="w-full bg-[#e6e7e8]">
             <div className="w-[400px] bg-white m-[auto]">
-                <div className="p-[40px] flex flex-col items-center justify-center">
+                <div className="p-[10px] sm:p-[40px] flex flex-col items-center justify-center">
                     <div className="flex justify-center items-center text-[14px] w-full mb-[1rem]">
                         <NavLink to={"login"} className={({isActive}) => 
                             isActive ? "bc-green text-white py-[1px]" : 

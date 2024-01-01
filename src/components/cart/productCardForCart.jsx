@@ -12,48 +12,40 @@ import { addInCart, removeFromCart } from "../../utils/utilities";
 
 export default function ProductCardForCart({product}) {
 
-    const {productUrl}= useContext(ModalContext);
+    // const {productUrl}= useContext(ModalContext);
     const {setTotalPrice, itemsInCart, setItemsInCart, token, projectId}= useContext(UserContext);
 
     const {displayImage, price, productId, productName, quantity, ratings, size}= product;
 
-    const [item, error, isLoading]= useFetchSingleProduct(productUrl.getProduct + `${productId}`);
+    // const [item, error, isLoading]= useFetchSingleProduct(productUrl.getProduct + `${productId}`);
 
-    const [cartItems, setCartItems]= useState({
-        size: size,
-        quantity: quantity,
-    })
+    // const [cartItems, setCartItems]= useState({
+    //     size: size,
+    //     quantity: quantity,
+    // })
 
-    // useEffect(() => {
-    //     setTotalPrice((old) => {console.log("old: ", old); old + (price * quantity)});
-    // }, [quantity, size])
+    // console.log(cartItems);
 
-    // console.log("is loading: ", isLoading);
-    // console.log(quantity)'
+    // const digits= [1,2,3,4,5,6,7,8,9,10];
 
-    // useEffect(() => {
-    //     console.log(price);
-    //     setPrice((old) => old + price );
-    // }, [])
-
-    const digits= [1,2,3,4,5,6,7,8,9,10];
-
-    function handleChange(event) {
-        const target= event.target.name;
-        // console.log(target);
-        const value= event.target.value;
+    // function handleChange(event) {
+    //     const target= event.target.name;
+    //     // console.log(target);
+    //     const value= event.target.value;
+    //     // console.log("value: ", value);
         
-        setCartItems((old) => {
-            return {
-                ...old, 
-                [target]: value,
-            }
-        })
+    //     setCartItems((old) => {
+    //         return {
+    //             ...old, 
+    //             [target]: value,
+    //         }
+    //     })
 
-        // removeFromCart(itemsInCart, setItemsInCart, product, token, projectId);
+        
+    //     removeFromCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId);
 
-        // addInCart(itemsInCart, setItemsInCart, product, token, projectId, cartItems.quantity, cartItems.size);
-    }
+    //     addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, cartItems.quantity, cartItems.size);
+    // }
 
     // console.log("items in cart: ", itemsInCart);
     return (
@@ -77,46 +69,43 @@ export default function ProductCardForCart({product}) {
                         <p className="font-bold my-[5px] text-[14px]">₹ {price}</p>
 
                         <div className="font-grey text-[14px] flex flex-col items-start py-[5px] font-bold min-[320px]:flex-row">
-                            <div className="flex border border-[#f2f2f2] rounded-[5px] p-[5px]">
+                            <div className="flex border border-[#f2f2f2] rounded-[5px] p-[5px] pointer-events-none">
                                 <p>Size:</p>
-                                <select name="size" id="size" className="border-0 cursor-pointer min-[320px]:ml-[5px]"
+                                <p className="min-[320px]:ml-[5px]">{size}</p>
+                                {/* <select name="size" id="size" value={cartItems.size}
+                                    className="border-0 cursor-pointer min-[320px]:ml-[5px]"
                                     onChange={(e) => handleChange(e)}>
                                     {
-                                        !isLoading && item?.size?.map(item => {
+                                        item?.size?.map(item => {
+
                                             return (
-                                                    item === size ?
-                                                        <option key={item} value={item} defaultValue={item}>
-                                                            {item}
-                                                        </option>
-                                                    :
-                                                        <option key={item} value={item}>
-                                                            {item}
-                                                        </option>        
+                                                <option key={item} value={item}>
+                                                    {item}
+                                                </option>        
                                             )
                                         })
                                     }
-                                </select>
+                                </select> */}
                             </div>
 
-                            <div className="flex mt-[10px] border border-[#f2f2f2] rounded-[5px] p-[5px] min-[320px]:ml-[10px] min-[320px]:mt-0">
+                            <div className="flex mt-[10px] border border-[#f2f2f2] rounded-[5px] p-[5px] min-[320px]:ml-[10px] 
+                                pointer-events-none
+                                min-[320px]:mt-0">
                                 <p>Qty: </p>
-                                <select name="quantity" id="quantity" className="border-0 cursor-pointer ml-[5px]"
+                                <p className="ml-[5px]"> {quantity} </p>
+                                {/* <select name="quantity" id="quantity" value={cartItems.quantity}
+                                    className="border-0 cursor-pointer ml-[5px]"
                                     onChange={(e) => handleChange(e)}>
                                     {
                                         digits.map(item => {
                                             return (
-                                                item === quantity ?
-                                                    <option key={item} value={item} defaultValue={item}>
-                                                        {item}
-                                                    </option>
-                                                :
-                                                    <option key={item} value={item}>
-                                                        {item}
-                                                    </option> 
+                                                <option key={item} value={item}>
+                                                    {item}
+                                                </option> 
                                             )
                                         })
                                     }
-                                </select>
+                                </select> */}
                             </div>
                         </div>
                     </div>

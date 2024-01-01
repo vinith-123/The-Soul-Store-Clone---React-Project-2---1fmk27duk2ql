@@ -15,21 +15,7 @@ import { myRandom } from "../../utils/utilities";
 export default function Cart() {
     const {itemsInCart, setTotalPrice, isAuthenticated, user}= useContext(UserContext);
 
-    const [estimatedTime, setEstimatedTime]= useState(myRandom(9));
-
-    // const price= itemsInCart?.reduce((accumulator, item) => {
-    //     return accumulator + item?.price;
-    //     // console.log("price: ", item.price);
-    // }, 0)
-
-    // useEffect(() => {
-    //     setTotalPrice(price);
-    // }, [])
-
-    // const [price, setPrice]= useState(0);
-
-
-    // console.log("cart: ", price);
+    // const [estimatedTime, setEstimatedTime]= useState(myRandom(9));
 
     return(
         <div className="flex flex-col items-center justify-center">
@@ -93,20 +79,6 @@ export default function Cart() {
 
                 <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
                     <div className="px-[5px] my-[1rem] flex flex-col md:flex-row">
-                        {/* address section */}
-
-                        {/* {
-                            (user?.address && user?.address.length > 0) &&
-                            <div>
-                                <p>Deliver To: {user?.name.toUpperCase()}, {user?.address[0]?.zipCode}</p>
-
-                                <div>
-                                    <p>{user?.address[0]?.street}, {user?.address[0]?.city}, {user?.address[0]?.state}, 
-                                        {user?.address[0]?.country} </p>
-                                    <p>Estimated delivery by {}</p>
-                                </div>
-                            </div>
-                        } */}
 
                         {/* cart items */}
                         <div className="mb-[1rem] w-full lg:w-[500px] xl:w-[700px]">
@@ -121,17 +93,20 @@ export default function Cart() {
                            <div className="mt-[1rem]">
                                 <Link to={"/wishlist"}>
                                     <div className="flex justify-between items-center cursor-pointer border-[2px] border-[#f2f2f2]
-                                        font-grey p-[1rem] text-[14px] font-bold">
+                                        font-grey p-[1rem] text-[14px] font-bold
+                                        group hover:bg-[#117a7a]">
                                         <div className="flex items-center">
                                             <div className="mt-[-3px] flex items-center">
-                                                <Empty_heart width= {"20px"} height={"20px"} color= {"#58595b"} />
+                                                <Empty_heart width= {"20px"} height={"20px"} color= {"#58595b"}
+                                                    effect={"group-hover:fill-white"} />
                                             </div>
 
-                                            <p className="ml-[8px]">ADD FROM WISHLIST</p>
+                                            <p className="ml-[8px] group-hover:text-white">ADD FROM WISHLIST</p>
                                         </div>
 
                                         <div>
-                                            <ChevronRight width= {"17px"} height={"17px"} color={"#58595b"} />
+                                            <ChevronRight width= {"17px"} height={"17px"} color={"#58595b"} 
+                                                effect={"group-hover:fill-white"}/>
                                         </div>
                                     </div>
                                 </Link>

@@ -6,6 +6,7 @@ import Categories from "../../components/homePage/categories";
 import OfficialMerchandise from "../../components/homePage/officialMerchandise";
 import ProductList from "../../components/homePage/productList";
 import { ModalContext } from "../../context/modalContext";
+import Carousel from "../../components/carousel/carousel";
 
 
 
@@ -14,7 +15,7 @@ import { ModalContext } from "../../context/modalContext";
 export default function PageForMen() {
 
     const {apparelForMen}= useContext(TagContext);
-    const {productUrl}= useContext(ModalContext);
+    const {productUrl, isMobile}= useContext(ModalContext);
     const {bigCorousalForMen, categories, merchandise}= useContext(ImageContext);
     // console.log("men: ", merchandise);
     const trendingUrl= productUrl.filterProduct + `{"sellerTag":"trending", "gender":"Men"}&page=1&limit=20`;
@@ -26,17 +27,9 @@ export default function PageForMen() {
         <div className="relative w-full flex flex-col items-center justify-between font-grey font-bold text-[14px]">
             <Apparel list={apparelForMen} />
 
-            {/* <BigCorousel list={bigCorousalForMen} /> */}
-            
-            {/* <div>
-                <SimpleImageSlider
-                    width= {896}
-                    height= {500}
-                    images= {isMobile ? list.smallSize : list.largeSize}
-                    showBullets= {true}
-                    showNavs= {true}
-                    loop= {true} />
-            </div> */}
+            <Carousel 
+                list={isMobile ? bigCorousalForMen.smallSize : bigCorousalForMen.largeSize}
+                effect={"h-[14rem] min-[425px]:h-[20rem] sm:h-[30rem] lg:h-[350px] xl:h-[490px] 2xl:h-[510px]"} />
 
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
                 <ProductList url= {trendingUrl} heading= {"TRENDING"} />
