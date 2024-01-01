@@ -11,8 +11,9 @@ export default function RenderProducts({list, isLoading}) {
 
     const {isMobile}= useContext(ModalContext);
 
-    const arr= [];
-    arr.fill("", 0, 19);
+    const arr= new Array(19).fill("");
+
+    // console.log(list.length);
 
     return (
         <div>
@@ -80,22 +81,32 @@ export default function RenderProducts({list, isLoading}) {
                                 }
                             </ul>
                             :
-                            <div className="flex flex-wrap items-center justify-center gap-[1rem]">
+                            <ul className="flex flex-wrap items-center justify-center gap-[1rem] animate-pulse">
                                 {
                                     arr.map((_, index) => {
                                         return (
-                                            <div className="relative flex items-center justify-center bg-[#f2f2f2] 
-                                            w-[120px] h-[150px]
-                                            bg-[#3d3c3c] overflow-hidden
-                                            sm:w-[180px] sm:h-[220px]
-                                            md:w-[230px] md:h-[290px]
-                                            lg:w-[340px] lg:h-[420px]">
+                                            <li key= {index} className="border border-[#f2f2f2] rounded-[5px]">
+                                                <div className="relative flex items-center justify-center bg-gray-200 bg-gray-300
+                                                    w-[120px] h-[150px]
+                                                    sm:w-[180px] sm:h-[220px]
+                                                    md:w-[230px] md:h-[290px]
+                                                    lg:w-[340px] lg:h-[420px]" >
+                                                </div>
 
-                                            </div>
+                                                <div className="p-[10px] mt-[10px]">
+                                                        
+                                                    <p className="w-full h-[1rem bg-gray-200 bg-gray-300]">
+                                                    </p>
+                                                        
+                                                    
+                                                    <p className="mt-[10px] w-full h-[1rem bg-gray-200 bg-gray-300]"></p>
+                                                    <p className="mt-[10px] w-full h-[1rem bg-gray-200 bg-gray-300]"></p>
+                                                </div>
+                                            </li>
                                         )
                                     })
                                 }
-                            </div>
+                            </ul>
                     }
                     
                 </div>

@@ -88,8 +88,6 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
         const sizeParam= sizeState.length !== 0 ? `,"size":${JSON.stringify(sizeState)}` : "";
 
         const newUrl= url + `{"gender":${JSON.stringify(gender)},"subCategory":${JSON.stringify(subCategory)}${brandParam}${sizeParam}}&page=1&limit=20`;
-        // const newUrl=`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":["shirt"],"size":["L"]}&page=1&limit=100`
-        // console.log(newUrl);
 
         setIsLoading(true);
         try {

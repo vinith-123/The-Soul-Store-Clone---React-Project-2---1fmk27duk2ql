@@ -76,7 +76,7 @@ export default function ProductList({url, heading}) {
                                 return (
                                     <li key= {index} className="p-[10px] w-full cursor-pointer animate-pulse">
                                         
-                                            <div className="bg-gray-200 bg-gray-400 relative flex items-center justify-center bg-[#f2f2f2] 
+                                            <div className="bg-gray-200 bg-gray-300 relative flex items-center justify-center bg-[#f2f2f2] 
                                                 w-[150px] h-[190px] bg-[#3d3c3c] overflow-hidden
                                                 sm:w-[180px] sm:h-[220px]
                                                 md:w-[230px] md:h-[290px]
@@ -84,13 +84,13 @@ export default function ProductList({url, heading}) {
                                             </div>
 
                                             <div className="w-full mt-[10px]">
-                                                <p className="bg-gray-200 bg-gray-400 w-full h-[1rem] "></p>
-                                                <p className="bg-gray-200 bg-gray-400 mt-[10px] w-[100px] h-[1rem]
+                                                <p className="bg-gray-200 bg-gray-300 w-full h-[1rem] "></p>
+                                                <p className="bg-gray-200 bg-gray-300 mt-[10px] w-[100px] h-[1rem]
                                                 sm:w-[150px]
                                                 md:w-[200px]
                                                 lg:w-[300px]"></p>
 
-                                                <p className="bg-gray-200 bg-gray-400 mt-[10px] w-[80px] h-[1rem] 
+                                                <p className="bg-gray-200 bg-gray-300 mt-[10px] w-[80px] h-[1rem] 
                                                 sm:w-[120px]
                                                 md:w-[180px]
                                                 lg:w-[280px]"></p>
