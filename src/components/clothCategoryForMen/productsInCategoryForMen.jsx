@@ -116,10 +116,20 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
 
         const sortProperty= types[sortType];
 
-        setProductList((prevState) => {
-            const sortedList= [...prevState].sort((a,b) => b[sortProperty] - a[sortProperty]);
-            return sortedList;
-        });
+        if(sortProperty === "productName") {
+            // console.log("sorted a-z")
+            setProductList((prevState) => {
+                const sortedList= [...prevState].sort((a,b) => {if(a.productName < b.productName) {return -1}; 
+                    if(a.productName > b.productName) {return 1}; return 0;});
+                // console.log(sortedList)
+                return sortedList;
+            });
+        } else if(sortProperty === "price") {
+            setProductList((prevState) => {
+                const sortedList= [...prevState].sort((a,b) => a[sortProperty] - b[sortProperty]);
+                return sortedList;
+            });
+        }  
     }, [sortType, brandState, sizeState])
 
     // console.log("product list: ", productList);
@@ -185,8 +195,9 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
 
                             <select className="border border-[#ccc] rounded-[5px] px-[10px] py-[5px]"
                                 onChange={(e) => {setSortType(() => e.target.value)}}>
-                                <option value="price">Price: Low to High</option>
+                                <option value={"none"}>Sort By</option>
                                 <option value="productName">Name: A-Z</option>
+                                <option value="price">Price: Low to High</option>
                             </select>
                         </div>
                 }
