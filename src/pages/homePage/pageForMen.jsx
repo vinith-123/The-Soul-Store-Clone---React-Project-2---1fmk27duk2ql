@@ -17,7 +17,6 @@ export default function PageForMen() {
     const {apparelForMen}= useContext(TagContext);
     const {productUrl, isMobile}= useContext(ModalContext);
     const {bigCorousalForMen, categories, merchandise}= useContext(ImageContext);
-    // console.log("men: ", merchandise);
     const trendingUrl= productUrl.filterProduct + `{"sellerTag":"trending", "gender":"Men"}&page=1&limit=20`;
     const bestSellerUrl= productUrl.filterProduct + `{"sellerTag":"best seller", "gender":"Men"}&page=1&limit=20`;
     const newArrivalUrl= productUrl.filterProduct + `{"sellerTag":"new arrival", "gender":"Men"}&page=1&limit=20`;

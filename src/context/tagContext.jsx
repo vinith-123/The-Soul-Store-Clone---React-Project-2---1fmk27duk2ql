@@ -111,8 +111,6 @@ function TagProvider({children}) {
         {category: "VACATION WEAR", isRoute: true, route: "/kids-winterwear", tagList: [] },
     ]);
 
-    // console.log("tagList: ", apparelForMen);
-
     const [shopByThemes, setShopByThemes]= useState([
         {theme: "SUPERHEROES", tagList: [
             {tag: "All Superheroes", routeName: "/", isNewCollection: false},

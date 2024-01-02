@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../context/userContext"
 import { Link } from "react-router-dom";
 import ProductCardForCart from "../../components/cart/productCardForCart";
 import OrderSectionForCart from "../../components/cart/orderSectionForCart/orderSectionForCart";
 import Empty_heart from "../../assets/svg/emptyHeart";
 import ChevronRight from "../../assets/svg/chevronRight";
-import { myRandom } from "../../utils/utilities";
 
 
 
@@ -14,8 +13,6 @@ import { myRandom } from "../../utils/utilities";
 
 export default function Cart() {
     const {itemsInCart, setTotalPrice, isAuthenticated, user}= useContext(UserContext);
-
-    // const [estimatedTime, setEstimatedTime]= useState(myRandom(9));
 
     return(
         <div className="flex flex-col items-center justify-center">

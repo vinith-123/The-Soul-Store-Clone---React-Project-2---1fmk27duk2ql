@@ -4,7 +4,6 @@ import Portal from "../portal/portal";
 import { ModalContext } from "../../context/modalContext";
 import { UserContext } from "../../context/userContext";
 import { updateUserInfo } from "../../utils/utilities";
-import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,8 +14,6 @@ export default function AddAddressModal({ isOpen, onClose, heading }) {
 
     const {token, projectId, user, saveUser}= useContext(UserContext);
     const {userData}= useContext(ModalContext);
-
-    const navigate= useNavigate();
 
     const [userInfo, setUserInfo]= useState({
         firstName: "",
@@ -67,11 +64,8 @@ export default function AddAddressModal({ isOpen, onClose, heading }) {
             return;
         } 
 
-        updateUserInfo(userData.updateData ,userInfo, user, saveUser, token, projectId, onClose)
-        // navigate("/");
-    }   
-
-    // console.log("user info: ", user);
+        updateUserInfo(userData.updateData ,userInfo, user, saveUser, token, projectId, onClose);
+    } 
 
     return (
         <Portal effect={"backdrop-grayscale backdrop-blur-[4px] backdrop-brightness-50 animate-vertical-slide"}>

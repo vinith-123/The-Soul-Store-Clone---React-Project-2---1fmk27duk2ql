@@ -52,8 +52,6 @@ function App() {
 
   const navigate= useNavigate();
 
-  // console.log(whishlistItems, itemsInCart);
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 900) {
@@ -79,13 +77,10 @@ function App() {
   
   useEffect(() => {
     const authToken= localStorage.getItem("authToken");
-    // console.log("token: ", api);
 
     if(authToken) {
     const user= localStorage.getItem("userInfo");
     const parsedUser= JSON.parse(user);
-
-    // console.log("userInfo: ", user)
 
       save_user_and_token(parsedUser, authToken);
       setIsAuthenticated(true);
@@ -101,7 +96,6 @@ function App() {
       try {
         fetchAuthorizedData(cartUrl.getList, authToken, projectId, filterCartData, setItemsInCart, setTotalPrice);
 
-        // console.log("cart data: ", itemsInCart); 
       } catch(error) {
           console.log("error while fetching cart items: ", error);
       }
@@ -114,9 +108,7 @@ function App() {
 
     if(authToken) { 
       try {
-        fetchAuthorizedData(whishlistUrl.getList, authToken, projectId, filterwishlistData, setWhishlistItems);
-
-        // console.log("whishlist data: ", whishlistItems);        
+        fetchAuthorizedData(whishlistUrl.getList, authToken, projectId, filterwishlistData, setWhishlistItems);      
       } catch(error) {
           console.log("error while fetching cart items: ", error);
       }

@@ -23,9 +23,8 @@ export default function SignUp() {
         name: "",
         email: "",
         password: "",
-        // phone: "",
         appType: "ecommerce",
-    });
+    }); 
 
     function handle_change(event) {
         const element= event.target;
@@ -67,14 +66,6 @@ export default function SignUp() {
         } else if(userInfo.password !== reEnterPass && reEnterPass !== "") {
             setIsPasswordCorrect(false);
         }
-        // } else if(!/[0-9]/.test(userInfo.phone)) {
-        //     set_error_state("*Phone number should only contain numbers");
-        //     return;
-        // } else if(userInfo.phone.length !== 10) {
-        //     console.log("length of phone no.: ", userInfo.phone.length);
-        //     set_error_state("*Phone number should be 10 digits long");
-        //     return;
-        // }
         sign_up(userInfo);
     }
 
@@ -97,13 +88,8 @@ export default function SignUp() {
                 body: JSON.stringify(payload),
                 redirect: 'follow',
             };
-
-            // console.log("data: ", payload);
         
             const response = await fetch(url, requestOptions);
-
-            // console.log("response: ", response);
-            // console.log("user info.: ", userInfo);
             
             if (response.ok) {
                 const data = await response.json();
@@ -129,7 +115,7 @@ export default function SignUp() {
 
             <div className="bg-[#e6e7e8] border border-black w-full font-grey 
                 text-[14px] font-bold">
-                <div className="p-[2rem] w-full">
+                <div className="px-[1rem] py-[2rem] w-full min-[426px]:p-[2rem]">
                     {/* 3rd party */}
                     <div className="flex items-center justify-between">
                         <div className="flex justify-center bg-white cursor-not-allowed">
@@ -173,11 +159,6 @@ export default function SignUp() {
 
                         {/* password conformation */}
                         <Password callbackFunction={checkPassword} placeholderText={"Confirm password"} isPasswordCorrect={isPasswordCorrect} />
-
-                        {/* phone number */}
-                        {/* <input type="tel" placeholder="Your phone number" name="phone" inputMode="number" required
-                            className="w-full border-[1px] border-[#ccc] mb-[0.5rem] rounded-[4px] px-[8px] py-[6px] text-black" 
-                            onChange={(event) => handle_change(event)}/> */}
                         
                         {
                             errorState && <div className="text-[#ff0000] font-semibold">{errorState}</div>

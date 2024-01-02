@@ -233,8 +233,6 @@ function ImageProvider({children}) {
             url: "https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/Merchandies-images/peanuts.jpg?format=webp&w=300&dpr=1.3",
         }, 
     ]
-
-    // console.log(bigCorousalForMen);
     return (
         <ImageContext.Provider value={{bigCorousalForMen, bigCorousalForWomen, bigCorousalForKids, categories, merchandise}}>
             {children}

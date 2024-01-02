@@ -10,8 +10,6 @@ import NavbarForProfile from "./navBarForProfile";
 export default function OrderSection() {
     const {isMobile}= useContext(ModalContext);
 
-    // console.log("user data: ", user);
-
     return (
         <>
             {

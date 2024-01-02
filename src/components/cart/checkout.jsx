@@ -25,13 +25,7 @@ export default function Checkout() {
         netBanking: false,
     });
 
-    const [target, setTarget]= useState("");
-
-    // console.log("methods in check-out: ", paymentMethod)
-
     const [isModalOpen, setIsModalOpen]= useState(false);
-
-    // console.log("address: ", user?.address)
 
     const [upiWallet, setUpiWallet]= useState({
         paytm: false,
@@ -40,19 +34,11 @@ export default function Checkout() {
     })
 
     function handleWallet(event) {
-        // event.preventDefault();
-        // event.stopPropagation();
-        
-        // event.bubbles= false;
-        // const target= event.target;
         const id= event.currentTarget.id;
-
-        // console.log(id);
 
         setUpiWallet((old) => {
 
-            return {...Object.fromEntries(Object.keys(old).map(key => {
-                // console.log(`${key}: `, (key === target)); 
+            return {...Object.fromEntries(Object.keys(old).map(key => { 
                 return [key, (key === id)]
             }))
         }
@@ -226,9 +212,6 @@ export default function Checkout() {
                                         
                                     </DropDown>
                                 </div>
-
-                                
-                            
 
                                 {/* credit-card */}
                             

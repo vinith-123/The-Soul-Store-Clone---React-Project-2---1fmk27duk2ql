@@ -5,7 +5,6 @@ import { mapDataForHomePage } from "../../utils/filterFunctions";
 import RenderProducts from "./renderProducts";
 import { fetch_data } from "../../utils/utilities";
 import CloseButton from "../../assets/svg/closeButton";
-import SizeModal from "../modals/sizeModal";
 
 
 
@@ -39,15 +38,7 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
     const [filterModal, setFilterModal]= useState(false);
     const [sortModal, setSortModal]= useState(false);
 
-    // const [link, setLink]= useState(url);
-    
-
-    // console.log("brands: ", brandState);
-    // console.log("sizes: ", sizeState);
-
-
     function handleBrandChange(e) {
-        // console.log(typeof e.target.name)
         const isChecked= e.target.checked;
         const name= e.target.name;
 
@@ -59,7 +50,6 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
     }
 
     function handleSizeChange(e) {
-        // console.log(e.target.checked)
         const isChecked= e.target.checked;
         const name= e.target.name;
 
@@ -71,7 +61,6 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
     }
 
     function handleModal(event) {
-        // console.log(event.currentTarget.value)
         const value= event.currentTarget.value;
         if(value === "filter") {
             setFilterModal(old => !old);
@@ -94,7 +83,6 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
             fetch_data(newUrl, projectId)
             .then((data) => {
                 const modifiedData= mapDataForHomePage(data);
-                // console.log("modified data: ", modifiedData);
                 setProductList(modifiedData);
             })
             .catch((error) => {
@@ -117,11 +105,9 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
         const sortProperty= types[sortType];
 
         if(sortProperty === "productName") {
-            // console.log("sorted a-z")
             setProductList((prevState) => {
                 const sortedList= [...prevState].sort((a,b) => {if(a.productName < b.productName) {return -1}; 
                     if(a.productName > b.productName) {return 1}; return 0;});
-                // console.log(sortedList)
                 return sortedList;
             });
         } else if(sortProperty === "price") {
@@ -131,8 +117,6 @@ export default function RenderProductsInCategory({url, subCategory, heading, gen
             });
         }  
     }, [sortType, brandState, sizeState])
-
-    // console.log("product list: ", productList);
 
     return (
         <div className="relative py-[1rem] px-[5px] flex sm:px-[1rem] flex-col md:flex-row">

@@ -3,11 +3,6 @@ import { createPortal } from "react-dom";
 
 
 export default function Portal({children, effect}) {
-    // function handleClick(e) {
-    //     if(e.target === e.currentTarget) {
-    //         onClose();
-    //     }
-    // };
 
     return createPortal(
         <div className={`fixed w-full h-full  overflow-hidden inset-0 z-50 flex items-center 

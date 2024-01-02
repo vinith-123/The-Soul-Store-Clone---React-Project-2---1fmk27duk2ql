@@ -10,8 +10,6 @@ import FilledSlashedEye from "../../assets/svg/filledSlashedEye";
 export default function Password({callbackFunction, placeholderText, isPasswordCorrect}) {
     const [isPasswordHidden, set_hiddenness_of_password]= useState(true);
 
-    // console.log("is correct: ", isPasswordCorrect)
-
     return (
         <>
             <div className="relative">

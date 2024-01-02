@@ -19,7 +19,6 @@ function UserProvider({children}) {
     const [token, set_token]= useState(null);
 
     const [username, setUserName]= useState(user?.name);
-    // const [firstLetterOfUser, setFirstLetterOfUser]= useState(username?.[0]);
     
 
     function save_user_and_token(user, token) {
@@ -30,10 +29,6 @@ function UserProvider({children}) {
     function saveUser(user) {
         set_user(user);
     }
-
-    // console.log("total price in global: ", totalPrice);
-
-    // console.log("user: ",user)
 
     return(
         <UserContext.Provider value={{isAuthenticated, setIsAuthenticated, itemsInCart, setItemsInCart,

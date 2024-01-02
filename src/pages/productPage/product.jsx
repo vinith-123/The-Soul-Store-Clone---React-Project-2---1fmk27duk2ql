@@ -31,8 +31,6 @@ export default function Product() {
     const [isInCart, setIsInCart]= useState(false);
     const [isInWishlist, setIsInWishlist]= useState(false);
 
-    // const [buttonColor, setButtonColor]= useState('#e11b23');
-
     const [isError, setIsError]= useState("");
 
     const [choosenSize, setChoosenSize]= useState("");
@@ -44,9 +42,6 @@ export default function Product() {
 
     const skeleton= new Array(4).fill("");
 
-    // console.log("cart: ", cart);
-    // console.log(product);
-
     function handleChangeForCart(event) {
         const target= event.target;
         const value= event.target.value;
@@ -54,8 +49,6 @@ export default function Product() {
         if(target.id === "size") {
             setChoosenSize(value);
         }
-
-        // console.log(event);
         setCart((old) => {
             return {
                 ...old,
@@ -64,18 +57,12 @@ export default function Product() {
         })
     }
 
-    // console.log("is in wishlist: ", isInWishlist);
-
     useEffect(() => {
         const isPresentInCart= findProduct(itemsInCart, product?.productId);
         const isPresentInWishlist= findProduct(whishlistItems, product?.productId);
 
         setIsInCart(isPresentInCart);
         setIsInWishlist(isPresentInWishlist);
-
-        // isInCart && setChoosenSize(product)
-
-        // console.log(isInWishlist)
     }, [whishlistItems, itemsInCart, product])
 
     useEffect(() => {
@@ -104,8 +91,6 @@ export default function Product() {
             navigate("/authentication");
         }   
     }
-
-    // console.log("product: ", product == []);
 
     return (
         <div className="w-full flex flex-col justify-center items-center py-[3rem]">
@@ -382,9 +367,6 @@ export default function Product() {
                     </div>
                 }    
             </div>
-            {/* {
-                console.log(product?.gender)
-            } */}
             
             {/* similar products */}
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-between pt-[1rem] md:pt-[3rem]">

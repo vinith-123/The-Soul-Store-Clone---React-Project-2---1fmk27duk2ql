@@ -9,8 +9,6 @@ import NavbarForProfile from "./navBarForProfile";
 export default function PointsSection() {
     const {isMobile}= useContext(ModalContext);
 
-    // console.log("user data: ", user);
-
     return (
         <>
             {

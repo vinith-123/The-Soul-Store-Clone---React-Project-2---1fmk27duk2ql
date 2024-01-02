@@ -22,8 +22,6 @@ export default function SizeModal({item, isOpen, onClose}) {
     function handleClick(event) {
         const value= event.target.value;
 
-        // console.log(value === choosenSize);
-
         if(value === choosenSize) {
             setChoosenSize("");
             setIsSizeSelected(false);
@@ -31,7 +29,6 @@ export default function SizeModal({item, isOpen, onClose}) {
             setChoosenSize(value);
             setIsSizeSelected(true);
         }
-        // console.log("size: ", value);
     }
 
     function addToCart(product) {
@@ -39,8 +36,6 @@ export default function SizeModal({item, isOpen, onClose}) {
         addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, 1, choosenSize);
         manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId);
     }
-
-    // console.log("selected size: ", choosenSize)
 
     if(!isOpen) return null;
 

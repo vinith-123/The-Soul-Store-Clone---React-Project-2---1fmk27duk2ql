@@ -25,23 +25,12 @@ export default function PageForWomen() {
         <div className="relative w-full flex flex-col items-center justify-between font-grey font-bold text-[14px]">
             <Apparel list={apparelForWomen} />
 
-            {/* <BigCorousel list={bigCorousalForMen} /> */}
-            
-            {/* <div>
-                <SimpleImageSlider
-                    width= {896}
-                    height= {500}
-                    images= {isMobile ? list.smallSize : list.largeSize}
-                    showBullets= {true}
-                    showNavs= {true}
-                    loop= {true} />
-            </div> */}
-
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
 
                 <Carousel 
                     list={isMobile ? bigCorousalForWomen.smallSize : bigCorousalForWomen.largeSize} 
                     effect={"h-[14rem] min-[425px]:h-[20rem] sm:h-[30rem] lg:h-[350px] xl:h-[490px] 2xl:h-[510px]"}/>
+                    
                 <ProductList url= {trendingUrl} heading= {"TRENDING"} />
                 <ProductList url= {newArrivalUrl} heading= {"NEW ARRIVAL"} />
                 <ProductList url= {topRatedUrl} heading= {"TOP RATED"} />

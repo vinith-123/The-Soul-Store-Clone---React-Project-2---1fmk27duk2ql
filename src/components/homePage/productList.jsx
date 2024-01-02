@@ -16,11 +16,6 @@ export default function ProductList({url, heading}) {
     const [productList, error]= useFetchList(url, mapDataForHomePage);
 
     const arr= new Array(20).fill("");
-    // console.log(productList.length);
-
-    // console.log(arr)
-
-    // console.log("url: ", url)
 
     return (
         <div className="w-full p-[10px] min-[425px]:p-[1rem]">
@@ -34,8 +29,6 @@ export default function ProductList({url, heading}) {
                         (productList.length > 0 && productList) ?
                             productList.map((product) => {
                                 const {productName, image, price, subCategory, productId}= product;
-
-                                // console.log(product);
 
                                 return (
                                     <li key= {productId} className="p-[10px] w-full cursor-pointer">
@@ -72,7 +65,6 @@ export default function ProductList({url, heading}) {
                             })
                             :
                             arr.map((_, index) => {
-                                // console.log("skeleton: ", index)
                                 return (
                                     <li key= {index} className="p-[10px] w-full cursor-pointer animate-pulse">
                                         

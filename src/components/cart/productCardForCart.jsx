@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import useFetchSingleProduct from "../../customHooks/useFetchSingleProduct";
-import { ModalContext } from "../../context/modalContext";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
-import { addInCart, removeFromCart } from "../../utils/utilities";
+import { removeFromCart } from "../../utils/utilities";
 
 
 
@@ -12,7 +10,6 @@ import { addInCart, removeFromCart } from "../../utils/utilities";
 
 export default function ProductCardForCart({product}) {
 
-    // const {productUrl}= useContext(ModalContext);
     const {setTotalPrice, itemsInCart, setItemsInCart, token, projectId}= useContext(UserContext);
 
     const {displayImage, price, productId, productName, quantity, ratings, size}= product;
@@ -23,8 +20,6 @@ export default function ProductCardForCart({product}) {
     //     size: size,
     //     quantity: quantity,
     // })
-
-    // console.log(cartItems);
 
     // const digits= [1,2,3,4,5,6,7,8,9,10];
 
@@ -46,8 +41,6 @@ export default function ProductCardForCart({product}) {
 
     //     addInCart(itemsInCart, setItemsInCart, product, setTotalPrice, token, projectId, cartItems.quantity, cartItems.size);
     // }
-
-    // console.log("items in cart: ", itemsInCart);
     return (
         <div className="border-[2px] border-[#f2f2f2]">
             <div>

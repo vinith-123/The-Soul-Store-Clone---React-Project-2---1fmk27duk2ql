@@ -9,7 +9,7 @@ import Portal from "../portal/portal";
 
 export default function GenderModal({setGender, isOpen, onClose}) {
 
-    // if (!isOpen) return null;
+    if (!isOpen) return null;
 
     return (
         <Portal effect={"backdrop-grayscale backdrop-blur-[4px] backdrop-brightness-50 animate-vertical-slide"}>

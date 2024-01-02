@@ -21,7 +21,6 @@ export default function useFetchList(url, mapFunction) {
             fetch_data(url, projectId)
             .then((data) => {
                 const modifiedData= mapFunction ? mapFunction(data) : data;
-                // console.log("modified data: ", modifiedData);
                 setData(modifiedData);
             })
             .catch((error) => {

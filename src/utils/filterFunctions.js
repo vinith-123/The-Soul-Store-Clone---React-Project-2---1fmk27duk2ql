@@ -1,23 +1,6 @@
 
 
 
-
-// export function mapDataForHomePage(list, ...args) {
-
-//     const params= [...args];
-
-//     return list.map(item => {
-//         return (
-//             params.map(parameter => {
-//                 return {
-//                     [parameter]: item.parameter, 
-//                 }
-//             })
-//         )
-//     })
-// }
-
-
 export function mapDataForHomePage(list) {
     return list.map(item => {
         return {

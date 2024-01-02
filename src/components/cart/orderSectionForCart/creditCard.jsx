@@ -48,15 +48,11 @@ export default function CreditCard() {
                 )
             }
         }
-
-        // setIsError(false)
     }
 
     function handleChange(event) {
         const name= event.target.name;
         const value= event.target.value;
-
-        // console.log(typeof value)
 
         setCardState(old => {
             return {
@@ -71,15 +67,7 @@ export default function CreditCard() {
         let errorDetails= "";
         let target= "";
 
-        // console.log("state changed")
-
         if(!/[0-9]/.test(cardState["cardNumber"] || cardState["cardNumber"].length !== 16)) {
-
-            // if(touchState["cardNumber"] === false) {
-            //     errorDetails= "*Enter Card Number"
-            // } else if(touchState["cardNumber"] === true) {
-            //     errorDetails ="*Invalid Card Number";
-            // }
 
             errorDetails= (touchState["cardNumber"] === false || cardState["cardNumber"] == "") ? "*Enter Card Number" : 
                 touchState["cardNumber"] === true ?  "*Invalid Card Number" : "";
@@ -122,8 +110,6 @@ export default function CreditCard() {
             setIsError(false)
         }
     }, [cardState])
-
-    // console.log(touchState, error);
 
     return (
         <div className="w-full flex items-center px-[1rem] py-[1rem] sm:px-[5rem] md:px-[3rem] xl:px-[6rem]">

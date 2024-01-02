@@ -17,11 +17,7 @@ export default function NetBanking() {
                 {bank: "Indian Overeseas Bank", value: "iob"},
                 {bank: "Yes Bank", value: "yb"},
                 {bank: "Kotak Bank", value: "kb"},
-                ]
-
-    // const images= [
-    //     {title: "hdfc", url: ""}
-    // ]
+                ];
 
     return (
         <div className="px-[2rem] w-full">

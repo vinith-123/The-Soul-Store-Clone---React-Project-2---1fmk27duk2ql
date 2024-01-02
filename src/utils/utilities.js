@@ -24,7 +24,6 @@ export function myRandom(num) {
 
 
 export async function fetch_data(url, projectId) {
-        // console.log(url)
     try {
         const data= await axios.get(url, {headers:{"projectId":projectId}});
        
@@ -48,11 +47,8 @@ export async function fetchAuthorizedData(url, authToken, projectId, filterFunct
         const response= await fetch(url, requestOptions);
         const data= await response.json();
 
-        // console.log(data.data)
-
 
         const modifiedData= filterFunction(data.data);
-        // console.log("modified data: ", modifiedData);
 
         setData(modifiedData);   
         setPrice && setPrice(data?.data?.totalPrice)
@@ -140,8 +136,6 @@ export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPr
     console.log("quantity: ", quantity);
     console.log("size: ", size);
 
-    // console.log(baseUrl + product.productId);
-
 
     try{
         var myHeaders = new Headers();
@@ -167,10 +161,6 @@ export async function addInCart(itemsInCart, setItemsInCart, product, setTotalPr
         const data= await response.json();
 
         const modifiedData= data.data;
-        // console.log("added: ", data.data);
-        // console.log(product) 
-        // console.log("response: ", response)
-        // console.log("product id: ", product.productId);
 
         if(response.ok) {
 
@@ -213,8 +203,6 @@ export async function removeFromCart(itemsInCart, setItemsInCart, product, setTo
         const data= await response.json();
 
         const modifiedData= data.data;
-
-        // console.log("removed: ", data.data);
 
         if(response.ok) {
             const newList= filterCartData(modifiedData);
@@ -267,8 +255,6 @@ export async function updateUserInfo(url, userInfo, user, saveUser, token, proje
             const data= await response.json();
 
             const {data: userData}= data;
-
-            // console.log("")
 
             const userDataString = JSON.stringify(userData.user);
             localStorage.setItem("userInfo", userDataString);

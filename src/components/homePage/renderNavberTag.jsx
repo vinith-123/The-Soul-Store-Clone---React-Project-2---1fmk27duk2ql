@@ -1,7 +1,5 @@
 import { useState } from "react"
 import ChevronUp from "../../assets/svg/chevronUp";
-import { closeTheModal, openTheModal } from "../../utils/utilities";
-import { Link } from "react-router-dom";
 import ChevronDown from "../../assets/svg/chevronDown";
 import RenderModal from "./renderModal";
 

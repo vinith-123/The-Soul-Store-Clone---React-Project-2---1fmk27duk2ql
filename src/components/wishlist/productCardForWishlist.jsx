@@ -3,7 +3,6 @@ import useFetchSingleProduct from "../../customHooks/useFetchSingleProduct";
 import { useContext, useState } from "react";
 import { ModalContext } from "../../context/modalContext";
 import CloseButton from "../../assets/svg/closeButton";
-import Portal from "../portal/portal";
 import SizeModal from "../modals/sizeModal";
 import { manageWhishlist } from "../../utils/utilities";
 import { UserContext } from "../../context/userContext";
@@ -29,8 +28,6 @@ export default function ProductCardForWishlist({product}) {
 
         manageWhishlist(whishlistItems, setWhishlistItems, product, token, projectId);
     }
-    
-    console.log("product: ", productDetails)
     return (
         <li key= {productId} className="relative m-[5px] cursor-pointer border border-[#999] rounded-[3px] sm:m-[10px] md:m-[1rem]">
             <Link to={`/product/${productId}`}>

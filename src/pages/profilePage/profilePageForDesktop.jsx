@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { TagContext } from "../../context/tagContext";
@@ -14,19 +14,6 @@ export default function ProfilePageForDeskTop() {
     const {optionsInAccountSection}= useContext(TagContext);
 
     const navigate= useNavigate();
-
-    // const [isLoggedOut, setIsLoggedOut]= useState(false);
-
-    // useEffect(() => {
-    //     if(isLoggedOut) {
-    //         localStorage.removeItem("authToken");
-
-    //         localStorage.removeItem("userInfo");
-    //         save_user_and_token(null, null);
-    //         setIsAuthenticated(false);
-    //         navigate("/men");
-    //     }
-    // }, [isLoggedOut]);
 
     function signOut() {
         localStorage.removeItem("authToken");
@@ -96,10 +83,6 @@ export default function ProfilePageForDeskTop() {
                 </div>
 
                 <Outlet />
-
-                {/* <div className="bg-black flex justify-center text-white w-[700px]">
-                    aside section
-                </div> */}
             </div>
         </div>
     )

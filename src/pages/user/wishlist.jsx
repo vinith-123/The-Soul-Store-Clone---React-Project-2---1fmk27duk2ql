@@ -12,8 +12,6 @@ export default function Wishlist() {
 
     const {whishlistItems, isAuthenticated}= useContext(UserContext);
 
-    // console.log("wishlist: ", whishlistItems);
-
     return (
         <div className="w-full h-full flex items-center justify-center">
             {

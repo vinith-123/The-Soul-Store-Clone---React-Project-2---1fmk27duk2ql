@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ChevronLeft from "../../assets/svg/chevronLeft";
 import ChevronRight from "../../assets/svg/chevronRight";
 import useInterval from "../../customHooks/useInterval";
@@ -37,8 +37,6 @@ export default function Carousel({list, effect}) {
             setIdx(old => old + 1);
         }   
     }
-
-    // console.log(n);
 
     return (
         (n !== 0 && n !== undefined) ? <div className="w-full xl:max-w-[1500px] flex flex-col items-center">

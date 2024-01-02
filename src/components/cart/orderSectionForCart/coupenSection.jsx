@@ -8,7 +8,6 @@ import VoucherDropDown from "../voucherDropDown";
 export default function CoupenSection({setIsChecked}) {
 
     function handleChange(event) {
-        // console.log("came: ", event.target.checked);
 
         setIsChecked(event.target.checked);
     }

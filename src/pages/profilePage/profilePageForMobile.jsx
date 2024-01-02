@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/svg/logo";
 import { useContext } from "react";
 import { TagContext } from "../../context/tagContext";

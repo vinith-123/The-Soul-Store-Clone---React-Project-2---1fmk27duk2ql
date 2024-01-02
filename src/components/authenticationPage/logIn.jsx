@@ -1,10 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FacebookIcon from "../../assets/svg/facebookIcon";
 import GoogleIcon from "../../assets/svg/googleIcon";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
-import FilledEye from "../../assets/svg/filledEye";
-import FilledSlashedEye from "../../assets/svg/filledSlashedEye";
 import Password from "./password";
 
 
@@ -96,7 +94,7 @@ export default function LogIn() {
 
             <div className="bg-[#e6e7e8] border border-black w-full font-grey 
                 text-[14px] font-bold">
-                <div className="p-[2rem] w-full">
+                <div className="px-[1rem] py-[2rem] w-full min-[426px]:p-[2rem]">
                     {/* 3rd party */}
                     <div className="flex items-center justify-between">
                         <div className="flex justify-center bg-white cursor-not-allowed">

@@ -1,17 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { ModalContext } from "../../context/modalContext";
-import useFetchList from "../../customHooks/useFetchList";
 
 
 
 
 export default function Navbar() {
-    const {productUrl}= useContext(ModalContext);
-
-    // console.log(productUrl.getList + "page=1&limit=300");
-    // const [productList, error]= useFetchList(productUrl.getList + "page=1&limit=100");
-    // console.log(productList)
 
     const navLinks= [
         {link: "WOMEN", route: "/women"},

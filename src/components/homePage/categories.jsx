@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 
 export default function Categories({list}) {
-    // console.log("list: ", list);
 
     return (
         <div className="flex flex-col items-center min-[320px]:p-[1rem]">

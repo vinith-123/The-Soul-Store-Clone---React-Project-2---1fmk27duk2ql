@@ -10,16 +10,8 @@ export default function Address() {
 
     const {user}= useContext(UserContext);
 
-    // console.log("user data: ", user);
-
-    // const {address, name, email}= user;
-
     const [isModalOpen, setIsModalOpen]= useState(false);
     const [address, setAddress]= useState(user?.address?.[0]);
-
-    // console.log("length: ", user.address.length)
-
-    // console.log("user: ",user)
 
     return (
         <>

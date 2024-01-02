@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 
 export default function RenderModal({list}) {
-    // console.log(list);
     let i=0;
     return (
         <ul className="absolute top-[65px] left-0 font-semibold text-[15px] w-max min-w-[10rem]
@@ -14,8 +13,6 @@ export default function RenderModal({list}) {
                 {
                     list.map((item) => {
                         const {tag, routeName, isNewCollection}= item;
-
-                        // console.log(routeName);
                         return (
                             <li key={i++} className="py-[3px] font-grey hover:text-[#e11b23]">
                                 <Link to={routeName}>

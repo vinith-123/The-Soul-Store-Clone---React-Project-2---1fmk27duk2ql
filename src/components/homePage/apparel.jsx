@@ -26,7 +26,6 @@ export default function Apparel({list}) {
         user}= useContext(UserContext);
 
     const [isHovered, setIsHovered]= useState(false);
-    // const [isHoveredOnProfile, setIsHoveredOnProfile]= useState(false);
 
     const [isLoggedOut, setIsLoggedOut]= useState(false);
     const [isClickedOnMenu, setIsClickedOnMenu]= useState(false);
@@ -255,7 +254,6 @@ export default function Apparel({list}) {
 
 
     function renderProfileModal(list) {
-        // console.log("list: ", list);
         return (
             <ul className="absolute top-[65px] right-0 font-semibold text-[15px] w-max min-w-[10rem]
                 shadow-[0px_0px_20px_0px_rgba(0,0,0,0.2) z-10 font-grey]">
@@ -263,8 +261,6 @@ export default function Apparel({list}) {
                     {
                         list.map((item) => {
                             const {option, route}= item;
-
-                            // console.log(route);
                             return (
                                 <li key={option} className="py-[3px] hover:text-[#e11b23]">
                                     <Link to={`/profile/${route}`}>
@@ -293,13 +289,14 @@ export default function Apparel({list}) {
                 <Searchbar />
 
                 <Link to={"/wishlist"}>
-                    <div className="relative px-[8px] lg:px-[1rem] py-[16px] border-b-[5px] border-white 
+                    <div className="relative px-[8px] mt-[6px] lg:px-[1rem] py-[16px] border-b-[5px] border-white 
                         hover:border-b-[5px] hover:border-[#e11b23] hover:bg-[#fbfbfb]">
                         <Empty_heart width={"22px"} height={"22px"} color={"#585958"} />
 
                         {
                             whishlistItems.length > 0 &&
-                            <div className="absolute top-[10px] right-[5px] text-white bc-red rounded-full font-bold px-[5px]">
+                            <div className="absolute top-[5px] right-0 text-white bc-red rounded-full font-bold px-[5px]
+                                lg:right-[5px]">
                                 {whishlistItems.length}
                                 
                             </div>
@@ -314,7 +311,8 @@ export default function Apparel({list}) {
                         <CartIcon width={"22px"} height={"22px"} color={"#585958"} />
                         {
                             itemsInCart.length > 0 &&
-                            <div className="absolute top-[10px] right-[5px] text-white bc-red rounded-full font-bold px-[5px]">
+                            <div className="absolute top-[10px] right-0 text-white bc-red rounded-full font-bold px-[5px]
+                                lg:right-[8px]">
                                 {itemsInCart.length}
                                 
                             </div>
@@ -346,47 +344,13 @@ export default function Apparel({list}) {
         )
     }
 
-    
-    // function renderThemeTages({list}) {
-    //     return (
-    //         list.map(item => {
-    //             const {tag, routeName, isNewCollection}= item;
-
-    //             return (
-                    
-    //             )
-    //         })
-    //     )
-    // }
-
-    // function renderShopByThemes() {
-    //     // console.log("shop by themes: ", shopByThemes);
-    //     return (
-    //         <ul className="absolute flex">
-    //             {
-    //                 shopByThemes.map(item => {
-    //                     const {theme, tagList}= item;
-    //                     // console.log("taglist: ", tagList);
-    //                     return (
-    //                         <div key={theme} className="relative flex flex-col flex-wrap">
-    //                             <p className="font-red font-bold">{theme}</p>
-
-    //                             <RenderModal list={tagList} />
-    //                         </div>
-    //                     )
-    //                 })
-    //             }
-    //         </ul>
-    //     )
-    // }
-
     return (
         <>
             {
                 isMobile ? 
                 <>
-                    <div className="flex justify-between items-center w-full px-[1rem]
-                        shadow-[0_2px_3px_rgba(0,0,0,0.2)]">
+                    <div className="flex justify-between items-center w-full px-[7px]
+                        shadow-[0_2px_3px_rgba(0,0,0,0.2)] sm:px-[1rem]">
                         <div onClick={() => setIsClickedOnMenu(true)}>
                             <Menu width={"30px"} height={"30px"} color={"#585958"} />
                         </div>
@@ -440,36 +404,6 @@ export default function Apparel({list}) {
                                         </li>
                                     })
                                 }
-
-                                {/* <li key={"shopByThemes"} className="w-full">
-                                    <div className="relative group flex items-center py-[18px] px-[10px] cursor-pointer" 
-                                        onMouseOver={() => setIsHovered(true)}
-                                        onMouseOut={() => setIsHovered(false)}>
-                                        <p className="group-hover:text-[#e11b23]">SHOP BY THEMES</p>
-
-                                        {
-                                            <div className="ml-[5px]">
-                                                    {
-                                                        isHovered ? 
-                                                            <ChevronUp width={"15px"} height={"15px"} effect={"gouup-hover:fill-[#e11b23]"} color={"#585958"} />
-                                                        :
-                                                            <ChevronDown width={"15px"} height={"15px"} effect={"group-hover:fill-[#e11b23]"} color={"#585958"} />
-
-                                                    }
-                                            </div>
-                                        }
-                                        
-                                        {
-                                            isHovered && 
-                                            <div className="flex w-max">
-                                                {
-                                                    renderShopByThemes()
-                                                }
-                                            </div>
-                                        }
-                                    </div>
-                                </li> */}
-
 
                                 <li key={"membership"} className="ml-[1rem] py-[19px] px-[10px] border-b-[5px] border-white 
                                     hover:text-[#e11b23] hover:border-b-[5px] hover:border-[#e11b23]">

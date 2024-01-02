@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "../../context/userContext"
 import { Link } from "react-router-dom";
 import { ModalContext } from "../../context/modalContext";
@@ -15,8 +15,6 @@ export default function EditProfileSection() {
     const { user, saveUser, token, projectId}= useContext(UserContext);
     const {isMobile, userData}= useContext(ModalContext);
 
-    // console.log("user data: ", user);
-
     const nameArr= user?.name?.split(" ");
     const [name, setName]= useState(nameArr?.[0]);
     const [surname, setSurname]= useState(nameArr?.[1]);
@@ -26,10 +24,6 @@ export default function EditProfileSection() {
         lastName: "",
         phone: "",
     });
-
-    // useEffect(() => {
-    //     setIsGenderModalOpen(true);
-    // }, [])
 
     const [isGenderModalOpen, setIsGenderModalOpen]= useState(true);
 
@@ -64,10 +58,7 @@ export default function EditProfileSection() {
         } 
 
         updateUserInfo(userData.updateData ,userInfo, user, saveUser, token, projectId)
-        // navigate("/");
     }   
-
-    // console.log(isGenderModalOpen, gender);
 
     return (
         <>
