@@ -28,7 +28,7 @@ export default function PageForMen() {
 
             <Carousel 
                 list={isMobile ? bigCorousalForMen.smallSize : bigCorousalForMen.largeSize}
-                effect={"h-[14rem] min-[425px]:h-[20rem] sm:h-[30rem] lg:h-[350px] xl:h-[490px] 2xl:h-[510px]"} />
+                effect={"h-[16rem] min-[425px]:h-[20rem] sm:h-[30rem] lg:h-[350px] xl:h-[490px] 2xl:h-[510px]"} />
 
             <div className="w-full xl:max-w-[1500px] flex flex-col justify-center items-center">
                 <ProductList url= {trendingUrl} heading= {"TRENDING"} />

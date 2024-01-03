@@ -341,7 +341,7 @@ export default function Product() {
                             
 
                             <div className={`flex items-center justify-center py-[5px] flex-grow flex-shrink
-                                rounded-[4px] cursor-pointer mt-[1rem] text-white bc-red sm:ml-[1rem]`}>
+                                rounded-[4px] cursor-pointer mt-[1rem] text-white bc-red ml-[1rem]`}>
                                 Loading...
                             </div>
                         </div>

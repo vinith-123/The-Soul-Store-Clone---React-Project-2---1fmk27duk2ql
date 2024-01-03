@@ -16,20 +16,20 @@ export default function Categories({list}) {
                     list.map((category, index) => {
                         const {route, url}= category;
                         return (
-                            <Link key={index} to={`/${route}`}>
-                                <li className="w-[7rem] h-[7rem] m-[10px]
-                                    overflow-hidden bg-[#3d3c3c]
-                                    sm:w-[15rem] sm:h-[15rem]
-                                    md:w-[21rem] md:h-[21rem]
-                                    lg:w-[300px] lg:h-[300px]
-                                    xl:w-[440px] xl:h-[440px]
-                                    2xl:w-[345px] 2xl:h-[345px]">
-                                    
-                                    <img src={url} alt="collection-image"
-                                        className="w-full h-full duration-500
-                                            hover:scale-110 hover:opacity-70" />
-                                </li>
-                            </Link>
+                            <li key={index} className="w-full h-fit m-[10px]
+                                overflow-hidden bg-[#3d3c3c]
+                                min-[470px]:w-[12rem] min-[470px]:h-[12rem]
+                                sm:w-[15rem] sm:h-[15rem]
+                                md:w-[21rem] md:h-[21rem]
+                                lg:w-[300px] lg:h-[300px]
+                                xl:w-[440px] xl:h-[440px]
+                                2xl:w-[345px] 2xl:h-[345px]">
+                                    <Link to={`/${route}`}>
+                                        <img src={url} alt="collection-image"
+                                            className="w-full h-full duration-500
+                                                hover:scale-110 hover:opacity-70" />
+                                    </Link>
+                            </li>
                         )
                         
                     })

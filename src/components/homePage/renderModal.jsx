@@ -1,20 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ModalContext } from "../../context/modalContext";
 
 
 
 
 
 export default function RenderModal({list}) {
+    const {isMobile}= useContext(ModalContext);
+
     let i=0;
     return (
-        <ul className="absolute top-[65px] left-0 font-semibold text-[15px] w-max min-w-[10rem]
-            shadow-[0px_0px_20px_-5px_rgba(0,0,0,0.5) z-20 bg-white]">
-            <div className="p-[1rem] bg-white">
+        <ul className={`absolute top-[65px] left-0 font-semibold text-[15px] z-20 bg-white 
+            ${isMobile ? "w-full" : "min-w-[10rem]"} 
+            shadow-[0px_0px_20px_-5px_rgba(0,0,0,0.5)]`}>
+            <div className="p-[10px] bg-white">
                 {
                     list.map((item) => {
                         const {tag, routeName, isNewCollection}= item;
                         return (
-                            <li key={i++} className="py-[3px] font-grey hover:text-[#e11b23]">
+                            <li key={i++} className="py-[3px] px-[10px] font-grey rounded-[5px]
+                                hover:text-[#e11b23] hover:bg-[#f2f2f2]">
                                 <Link to={routeName}>
                                     <div className="flex">
                                         <p>{tag}</p>
